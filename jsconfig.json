@@ -1,0 +1,21 @@
+{
+  "allowJs": true,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "./src/**/*",
+    "./typing/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    ".idea",
+    ".vscode",
+    "dist"
+  ]
+}
