@@ -6,14 +6,20 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "types": [
+      "element-plus/global"
+    ]
   },
   "include": [
     "./src/**/*",
-    "./typing/**/*"
+    "./typing/**/*",
+    "./vite/**/*",
+    "*.config.js",
   ],
   "exclude": [
     "node_modules",
+    "**/node_modules/*",
     ".idea",
     ".vscode",
     "dist"
