@@ -1,26 +1,11 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "types": ["element-plus/global"]
     },
-    "types": [
-      "element-plus/global"
-    ]
-  },
-  "include": [
-    "src/**/*",
-    "typing/**/*",
-    "vite/**/*",
-    "*.config.js"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*",
-    ".idea",
-    ".vscode",
-    "dist"
-  ]
+    "include": ["src/**/*", "typing/**/*", "vite/**/*", "*.config.js"],
+    "exclude": ["node_modules", "**/node_modules/*", ".idea", ".vscode", "dist"]
 }

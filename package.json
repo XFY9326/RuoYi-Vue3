@@ -9,7 +9,7 @@
     "build:prod": "vite build",
     "build:stage": "vite build --mode staging",
     "preview": "vite preview",
-    "reformat": "prettier --write \"src/**/*.{html,js,jsx,ts,tsx,vue,json,css,scss}\" \"vite/**/*.js\" \"vite.config.js\""
+    "reformat": "prettier --write \"src/**/*.{html,js,jsx,ts,tsx,vue,json,css,scss}\" \"vite/**/*.js\" \"vite.config.js\" \"jsconfig.json\" \"index.html\""
   },
   "dependencies": {
     "@element-plus/icons-vue": "2.3.1",

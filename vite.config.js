@@ -55,6 +55,6 @@ export default defineConfig(({ mode, command }) => {
         },
         build: {
             chunkSizeWarningLimit: 2048,
-        }
+        },
     };
 });
