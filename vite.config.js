@@ -21,40 +21,59 @@ export default defineConfig(({ mode, command }) => {
             // https://cn.vitejs.dev/config/#resolve-extensions
             extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
         },
-        // vite 相关配置
+        // Vite 服务器与反向代理配置
         server: {
             port: 8081,
             host: true,
             open: true,
             proxy: {
                 // https://cn.vitejs.dev/config/#server-proxy
+                // Swagger反代
+                "/v3/api-docs": {
+                    target: "http://localhost:8080",
+                    xfwd: true,
+                    changeOrigin: true,
+                },
+                "/swagger-ui": {
+                    target: "http://localhost:8080",
+                    xfwd: true,
+                    changeOrigin: true,
+                },
+                "/swagger-resources": {
+                    target: "http://localhost:8080",
+                    xfwd: true,
+                    changeOrigin: true,
+                },
+                // Dev服务器反代
                 "/dev-api": {
                     target: "http://localhost:8080",
                     changeOrigin: true,
-                    rewrite: p => p.replace(/^\/dev-api/, ""),
+                    rewrite: p => p.replace(/^\/dev-api/, "")
                 },
-            },
-        },
-        preview: {
-            port: 8081,
-            host: true,
-            open: false,
-            proxy: {
-                // https://cn.vitejs.dev/config/#server-proxy
+                // Prod服务器反代
                 "/api": {
                     target: "http://localhost:8080",
                     changeOrigin: true,
                     rewrite: p => p.replace(/^\/api/, ""),
                 },
+                // Stage服务器反代
                 "/stage-api": {
                     target: "http://localhost:8080",
                     changeOrigin: true,
                     rewrite: p => p.replace(/^\/stage-api/, ""),
-                },
+                }
             },
+        },
+        preview: {
+            port: 8081,
+            host: true,
+            open: false
         },
         build: {
             chunkSizeWarningLimit: 2048,
         },
+        optimizeDeps: {
+            include: ["quill", "vue-quilly"],
+        }
     };
 });
