@@ -48,7 +48,7 @@ export default defineConfig(({ mode, command }) => {
                 "/dev-api": {
                     target: "http://localhost:8080",
                     changeOrigin: true,
-                    rewrite: p => p.replace(/^\/dev-api/, "")
+                    rewrite: p => p.replace(/^\/dev-api/, ""),
                 },
                 // Prod服务器反代
                 "/api": {
@@ -61,19 +61,19 @@ export default defineConfig(({ mode, command }) => {
                     target: "http://localhost:8080",
                     changeOrigin: true,
                     rewrite: p => p.replace(/^\/stage-api/, ""),
-                }
+                },
             },
         },
         preview: {
             port: 8081,
             host: true,
-            open: false
+            open: false,
         },
         build: {
             chunkSizeWarningLimit: 2048,
         },
         optimizeDeps: {
             include: ["quill", "vue-quilly"],
-        }
+        },
     };
 });
