@@ -106,6 +106,9 @@ export function uploadAvatar(data) {
         url: "/system/user/profile/avatar",
         method: "post",
         data: data,
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
     });
 }
 
