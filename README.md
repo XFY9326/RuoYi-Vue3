@@ -39,6 +39,51 @@ pnpm dev
 # 前端访问地址 http://localhost:8081
 ```
 
+## Swagger
+
+由于后端使用SpringDoc需要反向代理支持，所有Swagger相关的Url都被定位到`/api-docs`路径下
+
+因此Swagger UI的Url修改为：`/api-docs/swagger-ui/index.html`
+
+## Nginx配置
+
+- `proxy_pass`设置为真实后端位置
+- 如果在Docker内，`proxy_set_header X-Forwarded-Port`设置为真实端口号  
+  如果不在Docker内，`proxy_set_header X-Forwarded-Port`设置为`$server_port`
+
+```text
+location / {
+    try_files $uri $uri/ /index.html;
+    index  index.html index.htm;
+}
+
+location /api {
+    proxy_pass http://127.0.0.1:8080;
+
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    proxy_set_header X-Forwarded-Prefix /api;
+
+    rewrite ^/api(.*)$ $1 break;
+}
+
+location /api-docs {
+    proxy_pass http://127.0.0.1:8080;
+
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Port $server_port;
+    proxy_set_header X-Forwarded-Prefix /api;
+}
+```
+
 ## 默认账户
 
 - 用户名：admin
