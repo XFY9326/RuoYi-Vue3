@@ -154,6 +154,7 @@ function handleRegister() {
                     loading.value = false;
                     if (captchaEnabled) {
                         getCode();
+                        registerForm.value.code = "";
                     }
                 });
         }

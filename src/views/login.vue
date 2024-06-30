@@ -141,6 +141,7 @@ function handleLogin() {
                     // 重新获取验证码
                     if (captchaEnabled.value) {
                         getCode();
+                        loginForm.value.code = "";
                     }
                 });
         }
