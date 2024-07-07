@@ -21,7 +21,7 @@ async function copyDTS(sourcePath, targetPath) {
 
 /**
  *
- * @returns {import("vite").Plugin}
+ * @returns {import("vite").Plugin | import("vite").PluginHooks}
  */
 export default function createElementPlusTypingCopy() {
     return {
