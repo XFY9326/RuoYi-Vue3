@@ -1,10 +1,10 @@
-# RuoYi v3.8.7
+# RuoYi v3.8.8
 
 ## 基线
 
 原始仓库: https://github.com/yangzongzhuan/RuoYi-Vue3
 
-当前基于Commit: 30f52f9
+当前基于Commit: bbb45eb
 
 ## 后端
 
