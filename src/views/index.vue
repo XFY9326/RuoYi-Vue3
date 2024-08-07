@@ -12,7 +12,7 @@
 </template>
 
 <script name="Index" setup>
-const version = ref("3.8.7");
+const version = import.meta.env.VITE_APP_VERSION;
 const page_title = import.meta.env.VITE_APP_TITLE;
 </script>
 
