@@ -76,10 +76,11 @@ function setLayout() {
 @import "@/assets/styles/variables.module.scss";
 
 .app-wrapper {
-    @include clearfix;
     position: relative;
     height: 100%;
     width: 100%;
+
+    @include clearfix;
 
     &.mobile.openSidebar {
         position: fixed;

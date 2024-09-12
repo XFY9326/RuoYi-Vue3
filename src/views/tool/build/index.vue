@@ -80,11 +80,11 @@
         </div>
         <div class="center-board">
             <div class="action-bar">
-                <el-button icon="Download" text type="primary" @click="download"> 导出vue文件 </el-button>
+                <el-button icon="Download" text type="primary" @click="download"> 导出vue文件</el-button>
                 <el-button class="copy-btn-main" icon="DocumentCopy" text type="primary" @click="copy">
                     复制代码
                 </el-button>
-                <el-button class="delete-btn" icon="Delete" text type="danger" @click="empty"> 清空 </el-button>
+                <el-button class="delete-btn" icon="Delete" text type="danger" @click="empty"> 清空</el-button>
             </div>
             <el-scrollbar class="center-scrollbar">
                 <el-row :gutter="formConf.gutter" class="center-board-row">

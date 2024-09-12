@@ -1,11 +1,11 @@
 <template>
     <el-form>
         <el-form-item>
-            <el-radio v-model="radioValue" :label="1"> 不填，允许的通配符[, - * /] </el-radio>
+            <el-radio v-model="radioValue" :label="1"> 不填，允许的通配符[, - * /]</el-radio>
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="2"> 每年 </el-radio>
+            <el-radio v-model="radioValue" :label="2"> 每年</el-radio>
         </el-form-item>
 
         <el-form-item>

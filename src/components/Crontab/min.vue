@@ -1,7 +1,7 @@
 <template>
     <el-form>
         <el-form-item>
-            <el-radio v-model="radioValue" :label="1"> 分钟，允许的通配符[, - * /] </el-radio>
+            <el-radio v-model="radioValue" :label="1"> 分钟，允许的通配符[, - * /]</el-radio>
         </el-form-item>
 
         <el-form-item>

@@ -1,11 +1,11 @@
 <template>
     <el-form>
         <el-form-item>
-            <el-radio v-model="radioValue" :label="1"> 周，允许的通配符[, - * ? / L #] </el-radio>
+            <el-radio v-model="radioValue" :label="1"> 周，允许的通配符[, - * ? / L #]</el-radio>
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="2"> 不指定 </el-radio>
+            <el-radio v-model="radioValue" :label="2"> 不指定</el-radio>
         </el-form-item>
 
         <el-form-item>

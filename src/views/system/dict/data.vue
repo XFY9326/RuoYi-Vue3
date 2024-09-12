@@ -75,7 +75,7 @@
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button icon="Close" plain type="warning" @click="handleClose">关闭 </el-button>
+                <el-button icon="Close" plain type="warning" @click="handleClose">关闭</el-button>
             </el-col>
             <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
         </el-row>

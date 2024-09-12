@@ -33,7 +33,7 @@
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button icon="Sort" plain type="info" @click="toggleExpandAll">展开/折叠 </el-button>
+                <el-button icon="Sort" plain type="info" @click="toggleExpandAll">展开/折叠</el-button>
             </el-col>
             <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
         </el-row>
@@ -154,7 +154,7 @@
                             </el-popover>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12" v-if="form.menuType === 'C'">
+                    <el-col v-if="form.menuType === 'C'" :span="12">
                         <el-form-item prop="routeName">
                             <template #label>
                                 <span>

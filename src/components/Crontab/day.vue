@@ -1,11 +1,11 @@
 <template>
     <el-form>
         <el-form-item>
-            <el-radio v-model="radioValue" :label="1"> 日，允许的通配符[, - * ? / L W] </el-radio>
+            <el-radio v-model="radioValue" :label="1"> 日，允许的通配符[, - * ? / L W]</el-radio>
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="2"> 不指定 </el-radio>
+            <el-radio v-model="radioValue" :label="2"> 不指定</el-radio>
         </el-form-item>
 
         <el-form-item>
@@ -37,7 +37,7 @@
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="6"> 本月最后一天 </el-radio>
+            <el-radio v-model="radioValue" :label="6"> 本月最后一天</el-radio>
         </el-form-item>
 
         <el-form-item>

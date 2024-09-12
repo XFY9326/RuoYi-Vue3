@@ -34,8 +34,8 @@
                 </el-col>
             </el-form>
             <div slot="footer">
-                <el-button type="primary" @click="handelConfirm"> 确定 </el-button>
-                <el-button @click="onClose"> 取消 </el-button>
+                <el-button type="primary" @click="handelConfirm"> 确定</el-button>
+                <el-button @click="onClose"> 取消</el-button>
             </div>
         </el-dialog>
     </div>
