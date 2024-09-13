@@ -8,46 +8,49 @@ SCRIPT_DIR=$(
 )
 PROJECT_PATH=$(realpath "${SCRIPT_DIR}")
 
-DEPLOY_DIST_PKG_PATH="$PROJECT_PATH/dist.zip"
-DEPLOY_DIST_DIR="$PROJECT_PATH/dist"
-
-DEPLOY_PATH="./www_root"
+DEPLOY_UNZIP_TMP_DIR="./deploy_temp"
 DEPLOY_DIR_NAME="html"
-DEPLOY_DIR_PATH="${DEPLOY_PATH}/${DEPLOY_DIR_NAME}"
+DEPLOY_DIR_PATH="./nginx/${DEPLOY_DIR_NAME}"
 
 BACKUP_DIR_PATH="$PROJECT_PATH/backup"
 ROLLBACK_DIR_PATH="$PROJECT_PATH/rollback"
 
 deploy() {
-    cd "${PROJECT_PATH}"
+  cd "${PROJECT_PATH}"
 
-    echo "Load dist: ${DEPLOY_DIST_PKG_PATH}"
-    if [ -f "${DEPLOY_DIST_PKG_PATH}" ]; then
-        unzip -q -o "${DEPLOY_DIST_PKG_PATH}"
-    else
-        echo "Can't find file ${DEPLOY_DIST_PKG_PATH}"
-        exit 1
+  DEPLOY_PACKAGE_PATH="$1"
+  echo "Load package: ${DEPLOY_PACKAGE_PATH}"
+  if [ -f "${DEPLOY_PACKAGE_PATH}" ]; then
+    if [ -d "${DEPLOY_UNZIP_TMP_DIR}" ]; then
+      echo "Clean old temp ${DEPLOY_UNZIP_TMP_DIR}"
+      rm -rf "${DEPLOY_UNZIP_TMP_DIR}"
     fi
+    mkdir -p "${DEPLOY_UNZIP_TMP_DIR}"
+    unzip -q -o -d "${DEPLOY_UNZIP_TMP_DIR}" "${DEPLOY_PACKAGE_PATH}"
+  else
+    echo "Can't find file ${DEPLOY_PACKAGE_PATH}"
+    exit 1
+  fi
 
-    if [ ! -d "${DEPLOY_DIST_DIR}" ]; then
-        echo "Can't find dir ${DEPLOY_DIST_DIR}"
-        exit 1
-    fi
+  if [ ! -d "${DEPLOY_UNZIP_TMP_DIR}" ]; then
+    echo "Can't find dir ${DEPLOY_UNZIP_TMP_DIR}"
+    exit 1
+  fi
 
-    if [ -z "$(ls -A "${DEPLOY_DIST_DIR}")" ]; then
-        echo "No deploy files"
-        rm -rf "${DEPLOY_DIST_DIR}"
-        return 0
-    fi
+  if [ -z "$(ls -A "${DEPLOY_UNZIP_TMP_DIR}")" ]; then
+    echo "No deploy files"
+    rm -rf "${DEPLOY_UNZIP_TMP_DIR}"
+    return 0
+  fi
 
-    echo "Deploy: ${DEPLOY_DIR_PATH}"
-    if [ -d "${DEPLOY_DIR_PATH}" ]; then
-        rm -rf "${DEPLOY_DIR_PATH}"
-        mv -f "${DEPLOY_DIST_DIR}" "${DEPLOY_DIR_PATH}"
-    else
-        echo "Can't find dir ${DEPLOY_DIR_PATH}"
-        exit 1
-    fi
+  echo "Deploy: ${DEPLOY_DIR_PATH}"
+  if [ -d "${DEPLOY_DIR_PATH}" ]; then
+    rm -rf "${DEPLOY_DIR_PATH}"
+    mv -f "${DEPLOY_UNZIP_TMP_DIR}" "${DEPLOY_DIR_PATH}"
+  else
+    echo "Can't find dir ${DEPLOY_DIR_PATH}"
+    exit 1
+  fi
 }
 
 backup() {
@@ -57,8 +60,6 @@ backup() {
   echo "Backup tag: ${BACKUP_TAG}"
 
   BACKUP_TAG_PATH="${BACKUP_DIR_PATH}/${BACKUP_TAG}"
-  mkdir -p "${BACKUP_TAG_PATH}"
-
   echo "Backup to: ${BACKUP_TAG_PATH}"
   if [ -d "${BACKUP_TAG_PATH}" ]; then
     if [ -z "$(ls -A "${BACKUP_TAG_PATH}")" ]; then
@@ -67,6 +68,8 @@ backup() {
       echo "Backup tag already exists"
       exit 1
     fi
+  else
+    mkdir -p "${BACKUP_TAG_PATH}"
   fi
 
   echo "Backup: ${DEPLOY_DIR_PATH}"
@@ -146,9 +149,9 @@ rollback() {
 print_help() {
   echo "Usage: $0 [COMMAND] [OPTION...]"
   echo "Commands:"
-  echo "  deploy [TAG]    Backup and deploy server"
-  echo "  backup [TAG]    Backup server as tag"
-  echo "  rollback [TAG]  Rollback server from tag"
+  echo "  deploy [PACKAGE_ZIP]    Deploy server"
+  echo "  backup [TAG]            Backup server as tag"
+  echo "  rollback [TAG]          Rollback server from tag"
 }
 
 if [ -z "${1+x}" ]; then
@@ -159,11 +162,10 @@ fi
 case "$1" in
 deploy)
   if [ -z "${2+x}" ]; then
-    echo "Empty backup tag!"
+    echo "Empty package path!"
     exit 1
   else
-    backup "$2"
-    deploy
+    deploy "$2"
   fi
   ;;
 backup)
