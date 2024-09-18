@@ -1,6 +1,6 @@
 ﻿import axios from "axios";
 import { ElLoading, ElMessage } from "element-plus";
-import { saveAs } from "file-saver";
+import FileSaver, { saveAs } from "file-saver";
 import { getToken } from "@/utils/auth";
 import errorCode from "@/utils/errorCode";
 import { blobValidate } from "@/utils/ruoyi";
@@ -10,7 +10,7 @@ let downloadLoadingInstance;
 
 /**
  * 下载文件
- * @param url {string}
+ * @param {string} url
  */
 function download_file(url) {
     axios({
@@ -30,14 +30,25 @@ function download_file(url) {
 }
 
 export default {
+    /**
+     * @param {string} name
+     * @param {boolean} isDelete
+     */
     name(name, isDelete = true) {
         let url = baseURL + "/common/download?fileName=" + encodeURIComponent(name) + "&delete=" + isDelete;
         download_file(url);
     },
+    /**
+     * @param {string} resource
+     */
     resource(resource) {
         let url = baseURL + "/common/download/resource?resource=" + encodeURIComponent(resource);
         download_file(url);
     },
+    /**
+     * @param {string} url_path
+     * @param {string} name
+     */
     zip(url_path, name) {
         let url = baseURL + url_path;
         downloadLoadingInstance = ElLoading.service({ text: "正在下载数据，请稍候", background: "rgba(0, 0, 0, 0.7)" });
@@ -63,6 +74,11 @@ export default {
                 downloadLoadingInstance.close();
             });
     },
+    /**
+     * @param {Blob | string} text
+     * @param {string} name
+     * @param {FileSaver.FileSaverOptions} opts
+     */
     saveAs(text, name, opts) {
         saveAs(text, name, opts);
     },

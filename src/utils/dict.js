@@ -3,6 +3,8 @@ import { getDicts } from "@/api/system/dict/data";
 
 /**
  * 获取字典数据
+ * @param {...string} args
+ * @returns
  */
 export function useDict(...args) {
     const res = ref({});

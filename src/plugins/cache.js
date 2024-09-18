@@ -1,4 +1,8 @@
 const sessionCache = {
+    /**
+     * @param {string} key
+     * @param {string} value
+     */
     set(key, value) {
         if (!sessionStorage) {
             return;
@@ -7,6 +11,10 @@ const sessionCache = {
             sessionStorage.setItem(key, value);
         }
     },
+    /**
+     * @param {string} key
+     * @returns {string | null}
+     */
     get(key) {
         if (!sessionStorage) {
             return null;
@@ -16,22 +24,35 @@ const sessionCache = {
         }
         return sessionStorage.getItem(key);
     },
+    /**
+     * @param {string} key
+     * @param {object} jsonValue
+     */
     setJSON(key, jsonValue) {
         if (jsonValue != null) {
             this.set(key, JSON.stringify(jsonValue));
         }
     },
+    /**
+     * @param {string} key
+     * @returns {object | null}
+     */
     getJSON(key) {
         const value = this.get(key);
-        if (value != null) {
-            return JSON.parse(value);
-        }
+        return value != null ? JSON.parse(value) : null;
     },
+    /**
+     * @param {string} key
+     */
     remove(key) {
         sessionStorage.removeItem(key);
     },
 };
 const localCache = {
+    /**
+     * @param {string} key
+     * @param {string} value
+     */
     set(key, value) {
         if (!localStorage) {
             return;
@@ -40,6 +61,10 @@ const localCache = {
             localStorage.setItem(key, value);
         }
     },
+    /**
+     * @param {string} key
+     * @returns {string | null}
+     */
     get(key) {
         if (!localStorage) {
             return null;
@@ -49,17 +74,26 @@ const localCache = {
         }
         return localStorage.getItem(key);
     },
+    /**
+     * @param {string} key
+     * @param {object} jsonValue
+     */
     setJSON(key, jsonValue) {
         if (jsonValue != null) {
             this.set(key, JSON.stringify(jsonValue));
         }
     },
+    /**
+     * @param {string} key
+     * @returns {object | null}
+     */
     getJSON(key) {
         const value = this.get(key);
-        if (value != null) {
-            return JSON.parse(value);
-        }
+        return value != null ? JSON.parse(value) : null;
     },
+    /**
+     * @param {string} key
+     */
     remove(key) {
         localStorage.removeItem(key);
     },

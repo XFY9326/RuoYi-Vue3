@@ -2,6 +2,8 @@ import { parseTime } from "./ruoyi";
 
 /**
  * 表格时间格式化
+ * @param {string|null} cellValue
+ * @returns {string}
  */
 export function formatDate(cellValue) {
     if (cellValue == null || cellValue === "") return "";

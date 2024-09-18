@@ -12,7 +12,11 @@ let downloadLoadingInstance;
 export let isRelogin = { show: false };
 
 axios.defaults.headers["Content-Type"] = "application/json;charset=utf-8";
-// 创建axios实例
+
+/**
+ * 创建axios实例
+ * @type {import("axios").AxiosInstance}
+ */
 const service = axios.create({
     // axios中请求配置有baseURL选项，表示请求URL公共部分
     baseURL: import.meta.env.VITE_APP_BASE_API,
@@ -135,7 +139,7 @@ service.interceptors.response.use(
 );
 
 // 通用下载方法
-export function download(url, params, filename, config) {
+export async function download(url, params, filename, config) {
     downloadLoadingInstance = ElLoading.service({ text: "正在下载数据，请稍候", background: "rgba(0, 0, 0, 0.7)" });
     return service
         .post(url, params, {

@@ -3,7 +3,12 @@
  * Copyright (c) 2019 ruoyi
  */
 
-// 日期格式化
+/**
+ * 日期格式化
+ * @param {string|number|Date} time
+ * @param {string} pattern
+ * @returns {{y: number, m: number, d: number, h: number, i: number, s: number, a: number},null}
+ */
 export function parseTime(time, pattern) {
     if (arguments.length === 0 || !time) {
         return null;
@@ -48,14 +53,23 @@ export function parseTime(time, pattern) {
     });
 }
 
-// 表单重置
+/**
+ * 表单重置
+ * @param {string} refName
+ */
 export function resetForm(refName) {
     if (this.$refs[refName]) {
         this.$refs[refName].resetFields();
     }
 }
 
-// 添加日期范围
+/**
+ * 添加日期范围
+ * @param {*} params
+ * @param {string|string[]} dateRange
+ * @param {string|undefined} propName
+ * @returns {*}
+ */
 export function addDateRange(params, dateRange, propName) {
     let search = params;
     search.params =

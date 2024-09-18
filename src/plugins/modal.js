@@ -3,55 +3,95 @@ import { ElLoading, ElMessage, ElMessageBox, ElNotification } from "element-plus
 let loadingInstance;
 
 export default {
-    // 消息提示
+    /**
+     * 消息提示
+     * @param {import("element-plus").MessageParamsWithType} content
+     */
     msg(content) {
         ElMessage.info(content);
     },
-    // 错误消息
+    /**
+     * 错误消息
+     * @param {import("element-plus").MessageParamsWithType} content
+     */
     msgError(content) {
         ElMessage.error(content);
     },
-    // 成功消息
+    /**
+     * 成功消息
+     * @param {import("element-plus").MessageParamsWithType} content
+     */
     msgSuccess(content) {
         ElMessage.success(content);
     },
-    // 警告消息
+    /**
+     * 警告消息
+     * @param {import("element-plus").MessageParamsWithType} content
+     */
     msgWarning(content) {
         ElMessage.warning(content);
     },
-    // 弹出提示
+    /**
+     * 弹出提示
+     * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     */
     alert(content) {
         ElMessageBox.alert(content, "系统提示");
     },
-    // 错误提示
+    /**
+     * 错误提示
+     * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     */
     alertError(content) {
         ElMessageBox.alert(content, "系统提示", { type: "error" });
     },
-    // 成功提示
+    /**
+     * 成功提示
+     * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     */
     alertSuccess(content) {
         ElMessageBox.alert(content, "系统提示", { type: "success" });
     },
-    // 警告提示
+    /**
+     * 警告提示
+     * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     */
     alertWarning(content) {
         ElMessageBox.alert(content, "系统提示", { type: "warning" });
     },
-    // 通知提示
+    /**
+     * 通知提示
+     * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     */
     notify(content) {
         ElNotification.info(content);
     },
-    // 错误通知
+    /**
+     * 错误通知
+     * @param {import("element-plus").NotificationParamsTyped} content
+     */
     notifyError(content) {
         ElNotification.error(content);
     },
-    // 成功通知
+    /**
+     * 成功通知
+     * @param {import("element-plus").NotificationParamsTyped} content
+     */
     notifySuccess(content) {
         ElNotification.success(content);
     },
-    // 警告通知
+    /**
+     * 警告通知
+     * @param {import("element-plus").NotificationParamsTyped} content
+     */
     notifyWarning(content) {
         ElNotification.warning(content);
     },
-    // 确认窗体
+    /**
+     * 确认窗体
+     * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     * @returns {Promise<import("element-plus").MessageBoxData>}
+     */
     confirm(content) {
         return ElMessageBox.confirm(content, "系统提示", {
             confirmButtonText: "确定",
@@ -59,7 +99,11 @@ export default {
             type: "warning",
         });
     },
-    // 提交内容
+    /**
+     * 提交内容
+     * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     * @returns {Promise<import("element-plus").MessageBoxData>}
+     */
     prompt(content) {
         return ElMessageBox.prompt(content, "系统提示", {
             confirmButtonText: "确定",
@@ -67,7 +111,10 @@ export default {
             type: "warning",
         });
     },
-    // 打开遮罩层
+    /**
+     * 打开遮罩层
+     * @param {import("vue").MaybeRef<string>} content
+     */
     loading(content) {
         loadingInstance = ElLoading.service({
             lock: true,
