@@ -42,15 +42,11 @@ pnpm build:stage
 # 构建生产环境
 pnpm build:prod
 
-# 构建生产包
-pnpm release
-
 # 预览生产环境
 pnpm preview
 
 # 代码批量格式化
 pnpm reformat
-
 ```
 ## Swagger
 
