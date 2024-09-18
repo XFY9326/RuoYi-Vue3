@@ -138,7 +138,13 @@ service.interceptors.response.use(
     }
 );
 
-// 通用下载方法
+/**
+ * 通用下载方法
+ * @param {string} url
+ * @param {object} params
+ * @param {string|null} filename
+ * @param {object} config
+ */
 export async function download(url, params, filename, config) {
     downloadLoadingInstance = ElLoading.service({ text: "正在下载数据，请稍候", background: "rgba(0, 0, 0, 0.7)" });
     return service

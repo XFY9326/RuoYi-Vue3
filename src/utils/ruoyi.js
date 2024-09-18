@@ -249,7 +249,11 @@ export function tansParams(params) {
     return result;
 }
 
-// 返回项目路径
+/**
+ * 返回项目路径
+ * @param {string} p
+ * @returns {string}
+ */
 export function getNormalPath(p) {
     if (p.length === 0 || !p || p === "undefined") {
         return p;
@@ -261,7 +265,11 @@ export function getNormalPath(p) {
     return res;
 }
 
-// 验证是否为blob格式
+/**
+ * 验证是否为blob格式
+ * @param {import("axios").AxiosResponse<any, any>} data
+ * @returns {boolean}
+ */
 export function blobValidate(data) {
     return data.type !== "application/json";
 }
