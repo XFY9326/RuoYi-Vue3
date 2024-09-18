@@ -18,6 +18,7 @@
 - 补充表单构建模块
 - 使用pnpm代替npm
 - 增加部分代码补全功能
+- 增加自动部署管理脚本
 
 ## 前端运行
 
@@ -32,13 +33,25 @@ npm install -g pnpm
 pnpm install
 
 # 启动服务
+# 前端访问地址 http://localhost:8081
 pnpm dev
 
-# 构建测试环境 pnpm build:stage
-# 构建生产环境 pnpm build:prod
-# 前端访问地址 http://localhost:8081
-```
+# 构建测试环境
+pnpm build:stage
 
+# 构建生产环境
+pnpm build:prod
+
+# 构建生产包
+pnpm release
+
+# 预览生产环境
+pnpm preview
+
+# 代码批量格式化
+pnpm reformat
+
+```
 ## Swagger
 
 由于后端使用SpringDoc需要反向代理支持，所有Swagger相关的Url都被定位到`/api-docs`路径下
