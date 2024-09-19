@@ -12,9 +12,6 @@ import directive from "./directive"; // directive
 import plugins from "./plugins"; // plugins
 import { download } from "@/utils/request";
 
-// svg图标
-import "virtual:svg-icons-register";
-
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
 import "./permission"; // permission control

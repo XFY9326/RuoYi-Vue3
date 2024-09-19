@@ -9,7 +9,7 @@ import createZipPack from "./zip-pack";
 
 /**
  * @param {Record<string, string>} viteEnv
- * @param {boolean} isBuild 
+ * @param {boolean} isBuild
  * @returns {import("vite").Plugin<any>[]}
  */
 export default function createVitePlugins(viteEnv, isBuild = false) {
@@ -17,7 +17,7 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
         vue(),
         ...createAutoImport(),
         createSetupExtend(),
-        createSvgIcon(isBuild),
+        createSvgIcon(),
         createElementPlusTypingCopy(),
     ];
     isBuild && vitePlugins.push(createZipPack(viteEnv));

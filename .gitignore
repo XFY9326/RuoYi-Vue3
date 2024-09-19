@@ -26,3 +26,4 @@ yarn.lock
 vite.config.js.timestamp*
 
 release/
+dist-zip/
