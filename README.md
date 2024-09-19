@@ -12,13 +12,13 @@
 
 ## 修改内容
 
-- 去除无用界面
-- 全部依赖升级
-- 增加prettier格式化代码
-- 补充表单构建模块
-- 使用pnpm代替npm
-- 增加部分代码补全功能
-- 增加自动部署管理脚本
+-   去除无用界面
+-   全部依赖升级
+-   增加prettier格式化代码
+-   补充表单构建模块
+-   使用pnpm代替npm
+-   增加部分代码补全功能
+-   增加自动部署管理脚本
 
 ## 前端运行
 
@@ -48,6 +48,7 @@ pnpm preview
 # 代码批量格式化
 pnpm reformat
 ```
+
 ## Swagger
 
 由于后端使用SpringDoc需要反向代理支持，所有Swagger相关的Url都被定位到`/api-docs`路径下
@@ -56,44 +57,49 @@ pnpm reformat
 
 ## Nginx配置
 
-- `proxy_pass`设置为真实后端位置
-- 如果在Docker内，`proxy_set_header X-Forwarded-Port`设置为真实端口号  
-  如果不在Docker内，`proxy_set_header X-Forwarded-Port`设置为`$server_port`
+-   `proxy_pass`设置为真实后端位置
+-   如果在Docker内，`proxy_set_header X-Forwarded-Port`设置为真实端口号  
+    如果不在Docker内，`proxy_set_header X-Forwarded-Port`设置为`$server_port`
+-   `gzip_static`：GZIP静态压缩，仅编译启用http_gzip_static_module模块时有效，可使用`nginx -V`查看
 
 ```text
-location / {
-    try_files $uri $uri/ /index.html;
-    index  index.html index.htm;
-}
+server {
+    gzip_static on;
 
-location /api {
-    proxy_pass http://127.0.0.1:8080;
+    location / {
+        try_files $uri $uri/ /index.html;
+        index  index.html index.htm;
+    }
 
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-Host $host;
-    proxy_set_header X-Forwarded-Port $server_port;
-    proxy_set_header X-Forwarded-Prefix /api;
+    location /api {
+        proxy_pass http://127.0.0.1:8080;
 
-    rewrite ^/api(.*)$ $1 break;
-}
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Port $server_port;
+        proxy_set_header X-Forwarded-Prefix /api;
 
-location /api-docs {
-    proxy_pass http://127.0.0.1:8080;
+        rewrite ^/api(.*)$ $1 break;
+    }
 
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-Host $host;
-    proxy_set_header X-Forwarded-Port $server_port;
-    proxy_set_header X-Forwarded-Prefix /api;
+    location /api-docs {
+        proxy_pass http://127.0.0.1:8080;
+
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Port $server_port;
+        proxy_set_header X-Forwarded-Prefix /api;
+    }
 }
 ```
 
 ## 默认账户
 
-- 用户名：admin
-- 密码：admin123
+-   用户名：admin
+-   密码：admin123
