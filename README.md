@@ -22,7 +22,7 @@
 
 ## 前端运行
 
-```bash
+```shell
 # 进入项目目录
 cd RuoYi-Vue3
 
@@ -37,16 +37,36 @@ pnpm install
 pnpm dev
 
 # 构建测试环境
+# 构建的内容在dist目录下，另外所有构建内容还会打包到dist-zip目录下
 pnpm build:stage
 
 # 构建生产环境
+# 构建的内容在dist目录下，另外所有构建内容还会打包到dist-zip目录下
 pnpm build:prod
 
-# 预览生产环境
+# 预览构建后的代码
+# 在dist目录下启动http服务器
 pnpm preview
 
 # 代码批量格式化
 pnpm reformat
+```
+
+## 部署
+
+在任意位置运行`ry.sh`脚本，将会以脚本所在目录作为工作目录存放临时与备份文件
+
+```shell
+# 将打包的文件部署到指定位置
+# 通过修改脚本中的DEPLOY_DIR_NAME和DEPLOY_DIR_PATH变量实现调整 部署位置
+# 部署的目录文件夹必须存在
+ry.sh deploy ./dist-zip/dist-production.zip
+
+# 备份服务为001
+ry.sh backup 001
+
+# 从001的备份回滚服务
+ry.sh rollback 001
 ```
 
 ## Swagger
