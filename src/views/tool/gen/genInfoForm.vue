@@ -88,8 +88,8 @@
                             </el-icon>
                         </el-tooltip>
                     </template>
-                    <el-radio v-model="info.genType" label="zip压缩包" value="0" />
-                    <el-radio v-model="info.genType" label="自定义路径" value="1" />
+                    <el-radio v-model="info.genType" value="0">zip压缩包</el-radio>
+                    <el-radio v-model="info.genType" value="1">自定义路径</el-radio>
                 </el-form-item>
             </el-col>
 
@@ -103,17 +103,18 @@
                             </el-icon>
                         </el-tooltip>
                     </template>
-                    <tree-select
-                        v-model:value="parentMenuName"
-                        :objMap="{ value: 'menuId', label: 'menuName', children: 'children' }"
-                        :options="menuOptions"
+                    <el-tree-select
+                        v-model="info.parentMenuId"
+                        :data="menuOptions"
+                        :props="{ value: 'menuId', label: 'menuName', children: 'children' }"
+                        value-key="menuId"
                         placeholder="请选择系统菜单"
-                        @update:value="handleUpdate"
+                        check-strictly
                     />
                 </el-form-item>
             </el-col>
 
-            <el-col v-if="info.genType === '1'" :span="24">
+            <el-col :span="24" v-if="info.genType == '1'">
                 <el-form-item prop="genPath">
                     <template #label>
                         自定义路径
@@ -144,9 +145,9 @@
             </el-col>
         </el-row>
 
-        <template v-if="info.tplCategory === 'tree'">
+        <template v-if="info.tplCategory == 'tree'">
             <h4 class="form-header">其他信息</h4>
-            <el-row v-show="info.tplCategory === 'tree'">
+            <el-row v-show="info.tplCategory == 'tree'">
                 <el-col :span="12">
                     <el-form-item>
                         <template #label>
@@ -210,7 +211,7 @@
             </el-row>
         </template>
 
-        <template v-if="info.tplCategory === 'sub'">
+        <template v-if="info.tplCategory == 'sub'">
             <h4 class="form-header">关联信息</h4>
             <el-row>
                 <el-col :span="12">
@@ -260,11 +261,9 @@
 
 <script setup>
 import { listMenu } from "@/api/system/menu";
-import { QuestionFilled } from "@element-plus/icons-vue";
 
 const subColumns = ref([]);
 const menuOptions = ref([]);
-const parentMenuName = ref("");
 const { proxy } = getCurrentInstance();
 
 const props = defineProps({
@@ -299,7 +298,7 @@ function tplSelectChange(value) {
 }
 
 function setSubTableColumns(value) {
-    for (const item in props.tables) {
+    for (var item in props.tables) {
         const name = props.tables[item].tableName;
         if (value === name) {
             subColumns.value = props.tables[item].columns;
@@ -308,41 +307,16 @@ function setSubTableColumns(value) {
     }
 }
 
-const emit = defineEmits(["update:parentMenuId"]);
-
-function handleUpdate(newValue) {
-    emit("update:parentMenuId", newValue);
-}
-
-/** 递归根据menuId查询menuName */
-function findMenuNameByMenuId(tree, parentMenuId) {
-    for (const node of tree) {
-        if (node["menuId"] === parentMenuId) {
-            return node["menuName"];
-        }
-        const children = node["children"];
-        if (children && children.length > 0) {
-            const label = findMenuNameByMenuId(children, parentMenuId);
-            if (label) {
-                return label;
-            }
-        }
-    }
-    return parentMenuId;
-}
-
-function setMenuName() {
-    const tree = menuOptions.value;
-    parentMenuName.value = findMenuNameByMenuId(tree, props.info.parentMenuId);
-}
-
 /** 查询菜单下拉树结构 */
-function getMenuTreeSelect() {
+function getMenuTreeselect() {
     listMenu().then(response => {
         menuOptions.value = proxy.handleTree(response.data, "menuId");
-        setMenuName();
     });
 }
+
+onMounted(() => {
+    getMenuTreeselect();
+});
 
 watch(
     () => props.info.subTableName,
@@ -359,6 +333,4 @@ watch(
         }
     }
 );
-
-getMenuTreeSelect();
 </script>

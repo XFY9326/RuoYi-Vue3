@@ -18,7 +18,7 @@
                     :class="item.elTagClass"
                     :disable-transitions="true"
                     :index="index"
-                    :type="item.elTagType === '' ? 'primary' : item.elTagType"
+                    :type="item.elTagType"
                     >{{ item.label + " " }}
                 </el-tag>
             </template>
