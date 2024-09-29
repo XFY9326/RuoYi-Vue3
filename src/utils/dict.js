@@ -4,9 +4,12 @@ import { getDicts } from "@/api/system/dict/data";
 /**
  * 获取字典数据
  * @param {...string} args
- * @returns
+ * @returns {import("vue").ToRefs<{[key: string]: DictDataOption[]}>}
  */
 export function useDict(...args) {
+    /**
+     * @type {Ref<{[key: string]: DictDataOption[]}>}
+     */
     const res = ref({});
     return (() => {
         args.forEach((dictType, index) => {

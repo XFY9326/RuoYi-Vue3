@@ -5,7 +5,14 @@
 
 import useUserStore from "@/store/modules/user";
 
+/**
+ * @type {import("vue").Directive}
+ */
 export default {
+    /**
+     * @param {HTMLElement} el
+     * @param {import("vue").DirectiveBinding} binding
+     */
     mounted(el, binding, vnode) {
         const { value } = binding;
         const super_admin = "admin";

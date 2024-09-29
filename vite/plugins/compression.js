@@ -1,5 +1,9 @@
 import { compression } from "vite-plugin-compression2";
 
+/**
+ * @param env {Record<string, string>}
+ * @returns {import("vite").PluginOption[]}
+ */
 export default function createCompression(env) {
     const { VITE_BUILD_COMPRESS } = env;
     const plugin = [];

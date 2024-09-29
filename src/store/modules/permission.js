@@ -9,6 +9,10 @@ import InnerLink from "@/layout/components/InnerLink";
 const modules = import.meta.glob("./../../views/**/*.vue");
 
 const usePermissionStore = defineStore("permission", {
+    /**
+     * @typedef {{routes: RouteOption[], sidebarRouters: RouteOption[], addRoutes: RouteOption[], topbarRouters: RouteOption[], defaultRoutes: RouteOption[]}} PermissionStore
+     * @returns {PermissionStore}
+     */
     state: () => ({
         routes: [],
         addRoutes: [],
@@ -16,21 +20,36 @@ const usePermissionStore = defineStore("permission", {
         topbarRouters: [],
         sidebarRouters: [],
     }),
+    /**
+     * @mixin PermissionStore
+     */
     actions: {
+        /**
+         * @param {RouteOption[]} routes
+         */
         setRoutes(routes) {
             this.addRoutes = routes;
             this.routes = constantRoutes.concat(routes);
         },
+        /**
+         * @param {RouteOption[]} routes
+         */
         setDefaultRoutes(routes) {
             this.defaultRoutes = constantRoutes.concat(routes);
         },
+        /**
+         * @param {RouteOption[]} routes
+         */
         setTopbarRoutes(routes) {
             this.topbarRouters = routes;
         },
+        /**
+         * @param {RouteOption[]} routes
+         */
         setSidebarRouters(routes) {
             this.sidebarRouters = routes;
         },
-        generateRoutes(roles) {
+        generateRoutes() {
             return new Promise(resolve => {
                 // 向后端请求路由数据
                 getRouters().then(res => {
@@ -55,7 +74,13 @@ const usePermissionStore = defineStore("permission", {
     },
 });
 
-// 遍历后台传来的路由字符串，转换为组件对象
+/**
+ * 遍历后台传来的路由字符串，转换为组件对象
+ * @param {RouteOption[]} asyncRouterMap
+ * @param {RouteOption | boolean} lastRouter
+ * @param {boolean} type
+ * @return {RouteOption[]}
+ */
 function filterAsyncRouter(asyncRouterMap, lastRouter = false, type = false) {
     return asyncRouterMap.filter(route => {
         if (type && route.children) {
@@ -83,7 +108,16 @@ function filterAsyncRouter(asyncRouterMap, lastRouter = false, type = false) {
     });
 }
 
+/**
+ * 遍历后台传来的路由字符串，转换为组件对象
+ * @param {RouteOption[]} childrenMap
+ * @param {RouteOption | boolean} lastRouter
+ * @return {RouteOption[]}
+ */
 function filterChildren(childrenMap, lastRouter = false) {
+    /**
+     * @type {RouteOption[]}
+     */
     let children = [];
     childrenMap.forEach((el, index) => {
         if (el.children && el.children.length) {
@@ -111,8 +145,15 @@ function filterChildren(childrenMap, lastRouter = false) {
     return children;
 }
 
-// 动态路由遍历，验证是否具备权限
+/**
+ * 动态路由遍历，验证是否具备权限
+ * @param {RouteOption[]} routes
+ * @return {RouteOption[]}
+ */
 export function filterDynamicRoutes(routes) {
+    /**
+     * @type {RouteOption[]}
+     */
     const res = [];
     routes.forEach(route => {
         if (route.permissions) {

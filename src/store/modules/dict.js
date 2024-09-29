@@ -1,9 +1,20 @@
 const useDictStore = defineStore("dict", {
+    /**
+     * @typedef {{dict: DictDataOption[]}} DictStore
+     * @returns {DictStore}
+     */
     state: () => ({
         dict: [],
     }),
+    /**
+     * @mixin DictStore
+     */
     actions: {
-        // 获取字典
+        /**
+         * 获取字典
+         * @param {string} _key
+         * @return {DictDataOption[] | null}
+         */
         getDict(_key) {
             if (_key == null && _key === "") {
                 return null;
@@ -18,7 +29,11 @@ const useDictStore = defineStore("dict", {
                 return null;
             }
         },
-        // 设置字典
+        /**
+         * 设置字典
+         * @param {string} _key
+         * @param {DictDataOption[]} value
+         */
         setDict(_key, value) {
             if (_key !== null && _key !== "") {
                 this.dict.push({
@@ -27,7 +42,11 @@ const useDictStore = defineStore("dict", {
                 });
             }
         },
-        // 删除字典
+        /**
+         * 删除字典
+         * @param {string} _key
+         * @return {boolean}
+         */
         removeDict(_key) {
             let bln = false;
             try {

@@ -1,3 +1,6 @@
+/**
+ * @type {DefaultSettings}
+ */
 export default {
     /**
      * 网页标题

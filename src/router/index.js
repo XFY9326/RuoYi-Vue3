@@ -24,7 +24,10 @@ import Layout from "@/layout";
  }
  */
 
-// 公共路由
+/**
+ * 公共路由
+ * @type {RouteOption[]}
+ */
 export const constantRoutes = [
     {
         path: "/redirect",
@@ -86,7 +89,10 @@ export const constantRoutes = [
     },
 ];
 
-// 动态路由，基于用户权限动态去加载
+/**
+ * 动态路由，基于用户权限动态去加载
+ * @type {RouteOption[]}
+ */
 export const dynamicRoutes = [
     {
         path: "/system/user-auth",

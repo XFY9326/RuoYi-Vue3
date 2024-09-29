@@ -15,7 +15,7 @@ axios.defaults.headers["Content-Type"] = "application/json;charset=utf-8";
 
 /**
  * 创建axios实例
- * @type {import("axios").AxiosInstance}
+ * @type {AxiosInstance}
  */
 const service = axios.create({
     // axios中请求配置有baseURL选项，表示请求URL公共部分

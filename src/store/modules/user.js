@@ -3,6 +3,10 @@ import { getToken, removeToken, setToken } from "@/utils/auth";
 import defAva from "@/assets/images/profile.svg";
 
 const useUserStore = defineStore("user", {
+    /**
+     * @typedef {{permissions: string[], roles: string[], name: string, id: string, avatar: string, token: string}} UserStore
+     * @returns {UserStore}
+     */
     state: () => ({
         token: getToken(),
         id: "",
@@ -11,6 +15,9 @@ const useUserStore = defineStore("user", {
         roles: [],
         permissions: [],
     }),
+    /**
+     * @mixin UserStore
+     */
     actions: {
         // 登录
         login(userInfo) {

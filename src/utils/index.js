@@ -309,6 +309,10 @@ export function removeClass(ele, cls) {
     }
 }
 
+/**
+ * @param {string} str
+ * @param {boolean} expectsLowerCase
+ */
 export function makeMap(str, expectsLowerCase) {
     const map = Object.create(null);
     const list = str.split(",");
@@ -361,16 +365,28 @@ export const beautifierConf = {
     },
 };
 
-// 首字母大小
+/**
+ * 首字母大小
+ * @param {string} str
+ * @return {string}
+ */
 export function titleCase(str) {
     return str.replace(/( |^)[a-z]/g, L => L.toUpperCase());
 }
 
-// 下划转驼峰
+/**
+ * 下划转驼峰
+ * @param {string} str
+ * @return {string}
+ */
 export function camelCase(str) {
     return str.replace(/_[a-z]/g, str1 => str1.substr(-1).toUpperCase());
 }
 
+/**
+ * @param {string} str
+ * @returns {boolean}
+ */
 export function isNumberStr(str) {
     return /^[+-]?(0|([1-9]\d*))(\.\d+)?$/g.test(str);
 }

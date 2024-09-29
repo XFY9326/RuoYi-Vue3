@@ -8,11 +8,11 @@ import createElementPlusTypingCopy from "./element-plus-typing-copy";
 import createZipPack from "./zip-pack";
 
 /**
- * @param {Record<string, string>} viteEnv
+ * @param {Record<string, string>} env
  * @param {boolean} isBuild
- * @returns {import("vite").Plugin<any>[]}
+ * @returns {import("vite").PluginOption[]}
  */
-export default function createVitePlugins(viteEnv, isBuild = false) {
+export default function createVitePlugins(env, isBuild = false) {
     const vitePlugins = [
         vue(),
         ...createAutoImport(),
@@ -20,7 +20,7 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
         createSvgIcon(),
         createElementPlusTypingCopy(),
     ];
-    isBuild && vitePlugins.push(createZipPack(viteEnv));
-    isBuild && vitePlugins.push(...createCompression(viteEnv));
+    isBuild && vitePlugins.push(createZipPack(env));
+    isBuild && vitePlugins.push(...createCompression(env));
     return vitePlugins;
 }
