@@ -131,7 +131,11 @@ export function selectDictLabels(data, value, separator) {
     return actions.join("").substring(0, actions.join("").length - 1);
 }
 
-// 字符串格式化(%s )
+/**
+ * 字符串格式化(%s )
+ * @param {string} str
+ * @return {string}
+ */
 export function sprintf(str) {
     let args = arguments,
         flag = true,
@@ -147,7 +151,11 @@ export function sprintf(str) {
     return flag ? str : "";
 }
 
-// 转换字符串，undefined,null等转化为""
+/**
+ * 转换字符串，undefined,null等转化为""
+ * @param {string} str
+ * @return {string}
+ */
 export function parseStrEmpty(str) {
     if (!str || str === "undefined" || str === "null") {
         return "";
@@ -267,7 +275,7 @@ export function getNormalPath(p) {
 
 /**
  * 验证是否为blob格式
- * @param {import("axios").AxiosResponse<any, any>} data
+ * @param {import("axios").AxiosResponse<any>} data
  * @returns {boolean}
  */
 export function blobValidate(data) {
