@@ -108,19 +108,19 @@
                         <el-row :gutter="32">
                             <el-col :offset="1" :span="22">
                                 <el-form-item label="缓存名称:" prop="cacheName">
-                                    <el-input v-model="cacheForm.cacheName" :readOnly="true" />
+                                    <el-input v-model="cacheForm.cacheName" readonly />
                                 </el-form-item>
                             </el-col>
                             <el-col :offset="1" :span="22">
                                 <el-form-item label="缓存键名:" prop="cacheKey">
-                                    <el-input v-model="cacheForm.cacheKey" :readOnly="true" />
+                                    <el-input v-model="cacheForm.cacheKey" readonly />
                                 </el-form-item>
                             </el-col>
                             <el-col :offset="1" :span="22">
                                 <el-form-item label="缓存内容:" prop="cacheValue">
                                     <el-input
                                         v-model="cacheForm.cacheValue"
-                                        :readOnly="true"
+                                        readonly
                                         :rows="8"
                                         type="textarea"
                                     />

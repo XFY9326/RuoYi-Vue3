@@ -232,16 +232,17 @@
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
-                        <el-form-item label="执行策略" prop="misfirePolicy">
+                    <el-col :span="15">
+                        <el-form-item label="计划策略" prop="misfirePolicy">
                             <el-radio-group v-model="form.misfirePolicy">
+                                <el-radio-button value="0">默认</el-radio-button>
                                 <el-radio-button value="1">立即执行</el-radio-button>
                                 <el-radio-button value="2">执行一次</el-radio-button>
                                 <el-radio-button value="3">放弃执行</el-radio-button>
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="9">
                         <el-form-item label="是否并发" prop="concurrent">
                             <el-radio-group v-model="form.concurrent">
                                 <el-radio-button value="0">允许</el-radio-button>
@@ -297,8 +298,8 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item label="执行策略：">
-                            <div v-if="form.misfirePolicy === '0'">默认策略</div>
+                        <el-form-item label="计划策略：">
+                            <div v-if="form.misfirePolicy === '0'">默认</div>
                             <div v-else-if="form.misfirePolicy === '1'">立即执行</div>
                             <div v-else-if="form.misfirePolicy === '2'">执行一次</div>
                             <div v-else-if="form.misfirePolicy === '3'">放弃执行</div>
@@ -384,8 +385,8 @@ function reset() {
         jobGroup: undefined,
         invokeTarget: undefined,
         cronExpression: undefined,
-        misfirePolicy: 1,
-        concurrent: 1,
+        misfirePolicy: "0",
+        concurrent: "1",
         status: "0",
     };
     proxy.resetForm("jobRef");
