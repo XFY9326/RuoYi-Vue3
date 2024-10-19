@@ -19,7 +19,7 @@
                     @keyup.enter="handleQuery"
                 />
             </el-form-item>
-            <el-form-item label="系统内置" prop="configType">
+            <el-form-item label="系统内置" prop="configType"style="width: 200px">
                 <el-select v-model="queryParams.configType" clearable placeholder="系统内置">
                     <el-option v-for="dict in sys_yes_no" :key="dict.value" :label="dict.label" :value="dict.value" />
                 </el-select>

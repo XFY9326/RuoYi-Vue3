@@ -193,13 +193,37 @@
                         <el-form-item label="请求方式：">{{ form.requestMethod }}</el-form-item>
                     </el-col>
                     <el-col :span="24">
-                        <el-form-item label="操作方法：">{{ form.method }}</el-form-item>
+                        <el-form-item label="操作方法：">
+                            <el-input
+                                v-model="form.method"
+                                type="textarea"
+                                resize="none"
+                                :autosize="{ minRows: 1, maxRows: 2 }"
+                                readonly
+                            />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="24">
-                        <el-form-item label="请求参数：">{{ form.operParam }}</el-form-item>
+                        <el-form-item label="请求参数：">
+                            <el-input
+                                v-model="form.operParam"
+                                type="textarea"
+                                resize="none"
+                                :autosize="{ minRows: 1, maxRows: 8 }"
+                                readonly
+                            />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="24">
-                        <el-form-item label="返回参数：">{{ form.jsonResult }}</el-form-item>
+                        <el-form-item label="返回参数：">
+                            <el-input
+                                v-model="form.jsonResult"
+                                type="textarea"
+                                resize="none"
+                                :autosize="{ minRows: 1, maxRows: 8 }"
+                                readonly
+                            />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="8">
                         <el-form-item label="操作状态：">

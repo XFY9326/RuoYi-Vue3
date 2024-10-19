@@ -269,7 +269,7 @@ const { proxy } = getCurrentInstance();
 const props = defineProps({
     info: {
         type: Object,
-        default: null,
+        default: "element-plus",
     },
     tables: {
         type: Array,
