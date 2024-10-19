@@ -12,7 +12,7 @@
                 选择图标
                 <el-input
                     v-model="key"
-                    :style="{ width: '260px' }"
+                    style="width: 260px; margin-left: 20px"
                     clearable
                     placeholder="请输入图标名称"
                     prefix-icon="Search"
@@ -64,7 +64,8 @@ function onSelect(icon) {
 
 watch(key, val => {
     if (val) {
-        iconList.value = originList.filter(name => name.indexOf(val) > -1);
+        val = val.toLowerCase();
+        iconList.value = originList.filter(name => name.toLowerCase().indexOf(val) > -1);
     } else {
         iconList.value = originList;
     }

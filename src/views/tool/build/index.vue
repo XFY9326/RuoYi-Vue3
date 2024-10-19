@@ -2,7 +2,7 @@
     <div class="container">
         <div class="left-board">
             <div class="logo-wrapper">
-                <div class="logo"><img :src="logo" alt="logo" /> Form Generator</div>
+                <div class="logo">Form Generator</div>
             </div>
             <el-scrollbar class="left-scrollbar">
                 <div class="components-list">
@@ -141,7 +141,6 @@
 import draggable from "vuedraggable";
 import ClipboardJS from "clipboard";
 import beautifier from "js-beautify";
-import logo from "@/assets/logo/logo.png";
 import {
     formConf as formConfData,
     inputComponents,
