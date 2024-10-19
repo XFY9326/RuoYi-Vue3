@@ -75,13 +75,13 @@
 
                 <el-row :gutter="10" class="mb8">
                     <el-col :span="1.5">
-                        <el-button v-hasPermi="['system:user:add']" icon="Plus" plain type="primary" @click="handleAdd"
+                        <el-button v-hasPermi:parent="['system:user:add']" icon="Plus" plain type="primary" @click="handleAdd"
                             >新增
                         </el-button>
                     </el-col>
                     <el-col :span="1.5">
                         <el-button
-                            v-hasPermi="['system:user:edit']"
+                            v-hasPermi:parent="['system:user:edit']"
                             :disabled="single"
                             icon="Edit"
                             plain
@@ -92,7 +92,7 @@
                     </el-col>
                     <el-col :span="1.5">
                         <el-button
-                            v-hasPermi="['system:user:remove']"
+                            v-hasPermi:parent="['system:user:remove']"
                             :disabled="multiple"
                             icon="Delete"
                             plain
@@ -103,7 +103,7 @@
                     </el-col>
                     <el-col :span="1.5">
                         <el-button
-                            v-hasPermi="['system:user:import']"
+                            v-hasPermi:parent="['system:user:import']"
                             icon="Upload"
                             plain
                             type="info"
@@ -113,7 +113,7 @@
                     </el-col>
                     <el-col :span="1.5">
                         <el-button
-                            v-hasPermi="['system:user:export']"
+                            v-hasPermi:parent="['system:user:export']"
                             icon="Download"
                             plain
                             type="warning"
@@ -194,7 +194,7 @@
                         <template #default="scope">
                             <el-tooltip v-if="scope.row.userId !== 1" content="修改" placement="top">
                                 <el-button
-                                    v-hasPermi="['system:user:edit']"
+                                    v-hasPermi:parent="['system:user:edit']"
                                     icon="Edit"
                                     link
                                     type="primary"
@@ -203,7 +203,7 @@
                             </el-tooltip>
                             <el-tooltip v-if="scope.row.userId !== 1" content="删除" placement="top">
                                 <el-button
-                                    v-hasPermi="['system:user:remove']"
+                                    v-hasPermi:parent="['system:user:remove']"
                                     icon="Delete"
                                     link
                                     type="primary"
@@ -212,7 +212,7 @@
                             </el-tooltip>
                             <el-tooltip v-if="scope.row.userId !== 1" content="重置密码" placement="top">
                                 <el-button
-                                    v-hasPermi="['system:user:resetPwd']"
+                                    v-hasPermi:parent="['system:user:resetPwd']"
                                     icon="Key"
                                     link
                                     type="primary"
@@ -221,7 +221,7 @@
                             </el-tooltip>
                             <el-tooltip v-if="scope.row.userId !== 1" content="分配角色" placement="top">
                                 <el-button
-                                    v-hasPermi="['system:user:edit']"
+                                    v-hasPermi:parent="['system:user:edit']"
                                     icon="CircleCheck"
                                     link
                                     type="primary"

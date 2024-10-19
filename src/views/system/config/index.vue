@@ -42,13 +42,13 @@
 
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
-                <el-button v-hasPermi="['system:config:add']" icon="Plus" plain type="primary" @click="handleAdd"
+                <el-button v-hasPermi:parent="['system:config:add']" icon="Plus" plain type="primary" @click="handleAdd"
                     >新增
                 </el-button>
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:config:edit']"
+                    v-hasPermi:parent="['system:config:edit']"
                     :disabled="single"
                     icon="Edit"
                     plain
@@ -59,7 +59,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:config:remove']"
+                    v-hasPermi:parent="['system:config:remove']"
                     :disabled="multiple"
                     icon="Delete"
                     plain
@@ -70,7 +70,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:config:export']"
+                    v-hasPermi:parent="['system:config:export']"
                     icon="Download"
                     plain
                     type="warning"
@@ -80,7 +80,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:config:remove']"
+                    v-hasPermi:parent="['system:config:remove']"
                     icon="Refresh"
                     plain
                     type="danger"

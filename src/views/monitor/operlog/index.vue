@@ -68,7 +68,7 @@
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:operlog:remove']"
+                    v-hasPermi:parent="['monitor:operlog:remove']"
                     :disabled="multiple"
                     icon="Delete"
                     plain
@@ -79,7 +79,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:operlog:remove']"
+                    v-hasPermi:parent="['monitor:operlog:remove']"
                     icon="Delete"
                     plain
                     type="danger"
@@ -89,7 +89,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:operlog:export']"
+                    v-hasPermi:parent="['monitor:operlog:export']"
                     icon="Download"
                     plain
                     type="warning"

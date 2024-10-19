@@ -27,13 +27,13 @@
 
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
-                <el-button v-hasPermi="['system:role:add']" icon="Plus" plain type="primary" @click="openSelectUser"
+                <el-button v-hasPermi:parent="['system:role:add']" icon="Plus" plain type="primary" @click="openSelectUser"
                     >添加用户
                 </el-button>
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:role:remove']"
+                    v-hasPermi:parent="['system:role:remove']"
                     :disabled="multiple"
                     icon="CircleClose"
                     plain

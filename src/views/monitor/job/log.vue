@@ -49,7 +49,7 @@
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:job:remove']"
+                    v-hasPermi:parent="['monitor:job:remove']"
                     :disabled="multiple"
                     icon="Delete"
                     plain
@@ -59,13 +59,13 @@
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button v-hasPermi="['monitor:job:remove']" icon="Delete" plain type="danger" @click="handleClean"
+                <el-button v-hasPermi:parent="['monitor:job:remove']" icon="Delete" plain type="danger" @click="handleClean"
                     >清空
                 </el-button>
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:job:export']"
+                    v-hasPermi:parent="['monitor:job:export']"
                     icon="Download"
                     plain
                     type="warning"

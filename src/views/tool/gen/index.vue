@@ -38,7 +38,7 @@
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['tool:gen:code']"
+                    v-hasPermi:parent="['tool:gen:code']"
                     :disabled="multiple"
                     icon="Download"
                     plain
@@ -48,18 +48,18 @@
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button v-hasRole="['admin']" icon="Plus" plain type="primary" @click="openCreateTable"
+                <el-button v-hasRole:parent="['admin']" icon="Plus" plain type="primary" @click="openCreateTable"
                     >创建
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button v-hasPermi="['tool:gen:import']" icon="Upload" plain type="info" @click="openImportTable"
+                <el-button v-hasPermi:parent="['tool:gen:import']" icon="Upload" plain type="info" @click="openImportTable"
                     >导入
                 </el-button>
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['tool:gen:edit']"
+                    v-hasPermi:parent="['tool:gen:edit']"
                     :disabled="single"
                     icon="Edit"
                     plain
@@ -70,7 +70,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['tool:gen:remove']"
+                    v-hasPermi:parent="['tool:gen:remove']"
                     :disabled="multiple"
                     icon="Delete"
                     plain
@@ -98,7 +98,7 @@
                 <template #default="scope">
                     <el-tooltip content="预览" placement="top">
                         <el-button
-                            v-hasPermi="['tool:gen:preview']"
+                            v-hasPermi:parent="['tool:gen:preview']"
                             icon="View"
                             link
                             type="primary"
@@ -107,7 +107,7 @@
                     </el-tooltip>
                     <el-tooltip content="编辑" placement="top">
                         <el-button
-                            v-hasPermi="['tool:gen:edit']"
+                            v-hasPermi:parent="['tool:gen:edit']"
                             icon="Edit"
                             link
                             type="primary"
@@ -116,7 +116,7 @@
                     </el-tooltip>
                     <el-tooltip content="删除" placement="top">
                         <el-button
-                            v-hasPermi="['tool:gen:remove']"
+                            v-hasPermi:parent="['tool:gen:remove']"
                             icon="Delete"
                             link
                             type="primary"
@@ -125,7 +125,7 @@
                     </el-tooltip>
                     <el-tooltip content="同步" placement="top">
                         <el-button
-                            v-hasPermi="['tool:gen:edit']"
+                            v-hasPermi:parent="['tool:gen:edit']"
                             icon="Refresh"
                             link
                             type="primary"
@@ -134,7 +134,7 @@
                     </el-tooltip>
                     <el-tooltip content="生成代码" placement="top">
                         <el-button
-                            v-hasPermi="['tool:gen:code']"
+                            v-hasPermi:parent="['tool:gen:code']"
                             icon="Download"
                             link
                             type="primary"
@@ -161,8 +161,8 @@
                     :name="key.substring(key.lastIndexOf('/') + 1, key.indexOf('.vm'))"
                 >
                     <el-link
-                        v-copyText="value"
-                        v-copyText:callback="copyTextSuccess"
+                        v-clipboard:copy="value"
+                        v-clipboard:success="copyTextSuccess"
                         :underline="false"
                         icon="DocumentCopy"
                         style="float: right"

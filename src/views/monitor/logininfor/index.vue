@@ -49,7 +49,7 @@
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:logininfor:remove']"
+                    v-hasPermi:parent="['monitor:logininfor:remove']"
                     :disabled="multiple"
                     icon="Delete"
                     plain
@@ -60,7 +60,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:logininfor:remove']"
+                    v-hasPermi:parent="['monitor:logininfor:remove']"
                     icon="Delete"
                     plain
                     type="danger"
@@ -70,7 +70,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:logininfor:unlock']"
+                    v-hasPermi:parent="['monitor:logininfor:unlock']"
                     :disabled="single"
                     icon="Unlock"
                     plain
@@ -81,7 +81,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:logininfor:export']"
+                    v-hasPermi:parent="['monitor:logininfor:export']"
                     icon="Download"
                     plain
                     type="warning"

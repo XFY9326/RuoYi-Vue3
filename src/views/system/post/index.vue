@@ -37,13 +37,13 @@
 
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
-                <el-button v-hasPermi="['system:post:add']" icon="Plus" plain type="primary" @click="handleAdd"
+                <el-button v-hasPermi:parent="['system:post:add']" icon="Plus" plain type="primary" @click="handleAdd"
                     >新增
                 </el-button>
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:post:edit']"
+                    v-hasPermi:parent="['system:post:edit']"
                     :disabled="single"
                     icon="Edit"
                     plain
@@ -54,7 +54,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:post:remove']"
+                    v-hasPermi:parent="['system:post:remove']"
                     :disabled="multiple"
                     icon="Delete"
                     plain
@@ -65,7 +65,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:post:export']"
+                    v-hasPermi:parent="['system:post:export']"
                     icon="Download"
                     plain
                     type="warning"

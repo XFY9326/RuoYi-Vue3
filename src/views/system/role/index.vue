@@ -46,13 +46,13 @@
         </el-form>
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
-                <el-button v-hasPermi="['system:role:add']" icon="Plus" plain type="primary" @click="handleAdd"
+                <el-button v-hasPermi:parent="['system:role:add']" icon="Plus" plain type="primary" @click="handleAdd"
                     >新增
                 </el-button>
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:role:edit']"
+                    v-hasPermi:parent="['system:role:edit']"
                     :disabled="single"
                     icon="Edit"
                     plain
@@ -63,7 +63,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:role:remove']"
+                    v-hasPermi:parent="['system:role:remove']"
                     :disabled="multiple"
                     icon="Delete"
                     plain
@@ -74,7 +74,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['system:role:export']"
+                    v-hasPermi:parent="['system:role:export']"
                     icon="Download"
                     plain
                     type="warning"
@@ -111,7 +111,7 @@
                 <template #default="scope">
                     <el-tooltip v-if="scope.row.roleId !== 1" content="修改" placement="top">
                         <el-button
-                            v-hasPermi="['system:role:edit']"
+                            v-hasPermi:parent="['system:role:edit']"
                             icon="Edit"
                             link
                             type="primary"
@@ -120,7 +120,7 @@
                     </el-tooltip>
                     <el-tooltip v-if="scope.row.roleId !== 1" content="删除" placement="top">
                         <el-button
-                            v-hasPermi="['system:role:remove']"
+                            v-hasPermi:parent="['system:role:remove']"
                             icon="Delete"
                             link
                             type="primary"
@@ -129,7 +129,7 @@
                     </el-tooltip>
                     <el-tooltip v-if="scope.row.roleId !== 1" content="数据权限" placement="top">
                         <el-button
-                            v-hasPermi="['system:role:edit']"
+                            v-hasPermi:parent="['system:role:edit']"
                             icon="CircleCheck"
                             link
                             type="primary"
@@ -138,7 +138,7 @@
                     </el-tooltip>
                     <el-tooltip v-if="scope.row.roleId !== 1" content="分配用户" placement="top">
                         <el-button
-                            v-hasPermi="['system:role:edit']"
+                            v-hasPermi:parent="['system:role:edit']"
                             icon="User"
                             link
                             type="primary"

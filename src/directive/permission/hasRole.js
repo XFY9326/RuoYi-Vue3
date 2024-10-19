@@ -6,15 +6,17 @@
 import useUserStore from "@/store/modules/user";
 
 /**
+ * @typedef {import("vue").DirectiveBinding<Array<string>, Array<string>, "parent">} hasRoleBinding
  * @type {import("vue").Directive}
  */
 export default {
     /**
      * @param {HTMLElement} el
-     * @param {import("vue").DirectiveBinding} binding
+     * @param {hasRoleBinding} binding
+     * @param {import("vue").VNode} vnode
      */
     mounted(el, binding, vnode) {
-        const { value } = binding;
+        const { value, _, arg } = binding;
         const super_admin = "admin";
         const roles = useUserStore().roles;
 
@@ -26,7 +28,11 @@ export default {
             });
 
             if (!hasRole) {
-                el.parentNode && el.parentNode.removeChild(el);
+                if (arg === "parent") {
+                    el.parentNode && el.parentNode.parentNode && el.parentNode.parentNode.removeChild(el.parentNode);
+                } else {
+                    el.parentNode && el.parentNode.removeChild(el);
+                }
             }
         } else {
             throw new Error(`请设置角色权限标签值`);

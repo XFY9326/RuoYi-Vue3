@@ -38,13 +38,13 @@
 
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
-                <el-button v-hasPermi="['monitor:job:add']" icon="Plus" plain type="primary" @click="handleAdd"
+                <el-button v-hasPermi:parent="['monitor:job:add']" icon="Plus" plain type="primary" @click="handleAdd"
                     >新增
                 </el-button>
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:job:edit']"
+                    v-hasPermi:parent="['monitor:job:edit']"
                     :disabled="single"
                     icon="Edit"
                     plain
@@ -55,7 +55,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:job:remove']"
+                    v-hasPermi:parent="['monitor:job:remove']"
                     :disabled="multiple"
                     icon="Delete"
                     plain
@@ -66,7 +66,7 @@
             </el-col>
             <el-col :span="1.5">
                 <el-button
-                    v-hasPermi="['monitor:job:export']"
+                    v-hasPermi:parent="['monitor:job:export']"
                     icon="Download"
                     plain
                     type="warning"
@@ -75,7 +75,7 @@
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button v-hasPermi="['monitor:job:query']" icon="Operation" plain type="info" @click="handleJobLog"
+                <el-button v-hasPermi:parent="['monitor:job:query']" icon="Operation" plain type="info" @click="handleJobLog"
                     >日志
                 </el-button>
             </el-col>
@@ -112,7 +112,7 @@
                 <template #default="scope">
                     <el-tooltip content="修改" placement="top">
                         <el-button
-                            v-hasPermi="['monitor:job:edit']"
+                            v-hasPermi:parent="['monitor:job:edit']"
                             icon="Edit"
                             link
                             type="primary"
@@ -121,7 +121,7 @@
                     </el-tooltip>
                     <el-tooltip content="删除" placement="top">
                         <el-button
-                            v-hasPermi="['monitor:job:remove']"
+                            v-hasPermi:parent="['monitor:job:remove']"
                             icon="Delete"
                             link
                             type="primary"
@@ -130,7 +130,7 @@
                     </el-tooltip>
                     <el-tooltip content="执行一次" placement="top">
                         <el-button
-                            v-hasPermi="['monitor:job:changeStatus']"
+                            v-hasPermi:parent="['monitor:job:changeStatus']"
                             icon="CaretRight"
                             link
                             type="primary"
@@ -139,7 +139,7 @@
                     </el-tooltip>
                     <el-tooltip content="任务详细" placement="top">
                         <el-button
-                            v-hasPermi="['monitor:job:query']"
+                            v-hasPermi:parent="['monitor:job:query']"
                             icon="View"
                             link
                             type="primary"
@@ -148,7 +148,7 @@
                     </el-tooltip>
                     <el-tooltip content="调度日志" placement="top">
                         <el-button
-                            v-hasPermi="['monitor:job:query']"
+                            v-hasPermi:parent="['monitor:job:query']"
                             icon="Operation"
                             link
                             type="primary"
