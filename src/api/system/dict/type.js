@@ -1,7 +1,7 @@
 import request from "@/utils/request";
 
 // 查询字典类型列表
-export function listType(query) {
+export async function listType(query) {
     return request({
         url: "/system/dict/type/list",
         method: "get",
@@ -10,7 +10,7 @@ export function listType(query) {
 }
 
 // 查询字典类型详细
-export function getType(dictId) {
+export async function getType(dictId) {
     return request({
         url: "/system/dict/type/" + dictId,
         method: "get",
@@ -18,7 +18,7 @@ export function getType(dictId) {
 }
 
 // 新增字典类型
-export function addType(data) {
+export async function addType(data) {
     return request({
         url: "/system/dict/type",
         method: "post",
@@ -27,7 +27,7 @@ export function addType(data) {
 }
 
 // 修改字典类型
-export function updateType(data) {
+export async function updateType(data) {
     return request({
         url: "/system/dict/type",
         method: "put",
@@ -36,7 +36,7 @@ export function updateType(data) {
 }
 
 // 删除字典类型
-export function delType(dictId) {
+export async function delType(dictId) {
     return request({
         url: "/system/dict/type/" + dictId,
         method: "delete",
@@ -44,7 +44,7 @@ export function delType(dictId) {
 }
 
 // 刷新字典缓存
-export function refreshCache() {
+export async function refreshCache() {
     return request({
         url: "/system/dict/type/refreshCache",
         method: "delete",
@@ -52,7 +52,7 @@ export function refreshCache() {
 }
 
 // 获取字典选择框列表
-export function optionselect() {
+export async function optionselect() {
     return request({
         url: "/system/dict/type/optionselect",
         method: "get",

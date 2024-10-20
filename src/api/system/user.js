@@ -2,7 +2,7 @@ import request from "@/utils/request";
 import { parseStrEmpty } from "@/utils/ruoyi";
 
 // 查询用户列表
-export function listUser(query) {
+export async function listUser(query) {
     return request({
         url: "/system/user/list",
         method: "get",
@@ -11,7 +11,7 @@ export function listUser(query) {
 }
 
 // 查询用户详细
-export function getUser(userId) {
+export async function getUser(userId) {
     return request({
         url: "/system/user/" + parseStrEmpty(userId),
         method: "get",
@@ -19,7 +19,7 @@ export function getUser(userId) {
 }
 
 // 新增用户
-export function addUser(data) {
+export async function addUser(data) {
     return request({
         url: "/system/user",
         method: "post",
@@ -28,7 +28,7 @@ export function addUser(data) {
 }
 
 // 修改用户
-export function updateUser(data) {
+export async function updateUser(data) {
     return request({
         url: "/system/user",
         method: "put",
@@ -37,7 +37,7 @@ export function updateUser(data) {
 }
 
 // 删除用户
-export function delUser(userId) {
+export async function delUser(userId) {
     return request({
         url: "/system/user/" + userId,
         method: "delete",
@@ -45,7 +45,7 @@ export function delUser(userId) {
 }
 
 // 用户密码重置
-export function resetUserPwd(userId, password) {
+export async function resetUserPwd(userId, password) {
     const data = {
         userId,
         password,
@@ -58,7 +58,7 @@ export function resetUserPwd(userId, password) {
 }
 
 // 用户状态修改
-export function changeUserStatus(userId, status) {
+export async function changeUserStatus(userId, status) {
     const data = {
         userId,
         status,
@@ -71,7 +71,7 @@ export function changeUserStatus(userId, status) {
 }
 
 // 查询用户个人信息
-export function getUserProfile() {
+export async function getUserProfile() {
     return request({
         url: "/system/user/profile",
         method: "get",
@@ -79,7 +79,7 @@ export function getUserProfile() {
 }
 
 // 修改用户个人信息
-export function updateUserProfile(data) {
+export async function updateUserProfile(data) {
     return request({
         url: "/system/user/profile",
         method: "put",
@@ -88,7 +88,7 @@ export function updateUserProfile(data) {
 }
 
 // 用户密码重置
-export function updateUserPwd(oldPassword, newPassword) {
+export async function updateUserPwd(oldPassword, newPassword) {
     const data = {
         oldPassword,
         newPassword,
@@ -101,7 +101,7 @@ export function updateUserPwd(oldPassword, newPassword) {
 }
 
 // 用户头像上传
-export function uploadAvatar(data) {
+export async function uploadAvatar(data) {
     return request({
         url: "/system/user/profile/avatar",
         method: "post",
@@ -113,7 +113,7 @@ export function uploadAvatar(data) {
 }
 
 // 查询授权角色
-export function getAuthRole(userId) {
+export async function getAuthRole(userId) {
     return request({
         url: "/system/user/authRole/" + userId,
         method: "get",
@@ -121,7 +121,7 @@ export function getAuthRole(userId) {
 }
 
 // 保存授权角色
-export function updateAuthRole(data) {
+export async function updateAuthRole(data) {
     return request({
         url: "/system/user/authRole",
         method: "put",
@@ -130,7 +130,7 @@ export function updateAuthRole(data) {
 }
 
 // 查询部门下拉树结构
-export function deptTreeSelect() {
+export async function deptTreeSelect() {
     return request({
         url: "/system/user/deptTree",
         method: "get",

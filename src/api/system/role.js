@@ -1,7 +1,7 @@
 import request from "@/utils/request";
 
 // 查询角色列表
-export function listRole(query) {
+export async function listRole(query) {
     return request({
         url: "/system/role/list",
         method: "get",
@@ -10,7 +10,7 @@ export function listRole(query) {
 }
 
 // 查询角色详细
-export function getRole(roleId) {
+export async function getRole(roleId) {
     return request({
         url: "/system/role/" + roleId,
         method: "get",
@@ -18,7 +18,7 @@ export function getRole(roleId) {
 }
 
 // 新增角色
-export function addRole(data) {
+export async function addRole(data) {
     return request({
         url: "/system/role",
         method: "post",
@@ -27,7 +27,7 @@ export function addRole(data) {
 }
 
 // 修改角色
-export function updateRole(data) {
+export async function updateRole(data) {
     return request({
         url: "/system/role",
         method: "put",
@@ -36,7 +36,7 @@ export function updateRole(data) {
 }
 
 // 角色数据权限
-export function dataScope(data) {
+export async function dataScope(data) {
     return request({
         url: "/system/role/dataScope",
         method: "put",
@@ -45,7 +45,7 @@ export function dataScope(data) {
 }
 
 // 角色状态修改
-export function changeRoleStatus(roleId, status) {
+export async function changeRoleStatus(roleId, status) {
     const data = {
         roleId,
         status,
@@ -58,7 +58,7 @@ export function changeRoleStatus(roleId, status) {
 }
 
 // 删除角色
-export function delRole(roleId) {
+export async function delRole(roleId) {
     return request({
         url: "/system/role/" + roleId,
         method: "delete",
@@ -66,7 +66,7 @@ export function delRole(roleId) {
 }
 
 // 查询角色已授权用户列表
-export function allocatedUserList(query) {
+export async function allocatedUserList(query) {
     return request({
         url: "/system/role/authUser/allocatedList",
         method: "get",
@@ -75,7 +75,7 @@ export function allocatedUserList(query) {
 }
 
 // 查询角色未授权用户列表
-export function unallocatedUserList(query) {
+export async function unallocatedUserList(query) {
     return request({
         url: "/system/role/authUser/unallocatedList",
         method: "get",
@@ -84,7 +84,7 @@ export function unallocatedUserList(query) {
 }
 
 // 取消用户授权角色
-export function authUserCancel(data) {
+export async function authUserCancel(data) {
     return request({
         url: "/system/role/authUser/cancel",
         method: "put",
@@ -93,7 +93,7 @@ export function authUserCancel(data) {
 }
 
 // 批量取消用户授权角色
-export function authUserCancelAll(data) {
+export async function authUserCancelAll(data) {
     return request({
         url: "/system/role/authUser/cancelAll",
         method: "put",
@@ -102,7 +102,7 @@ export function authUserCancelAll(data) {
 }
 
 // 授权用户选择
-export function authUserSelectAll(data) {
+export async function authUserSelectAll(data) {
     return request({
         url: "/system/role/authUser/selectAll",
         method: "put",
@@ -111,7 +111,7 @@ export function authUserSelectAll(data) {
 }
 
 // 根据角色ID查询部门树结构
-export function deptTreeSelect(roleId) {
+export async function deptTreeSelect(roleId) {
     return request({
         url: "/system/role/deptTree/" + roleId,
         method: "get",

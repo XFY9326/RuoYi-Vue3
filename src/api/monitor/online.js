@@ -1,7 +1,7 @@
 import request from "@/utils/request";
 
 // 查询在线用户列表
-export function list(query) {
+export async function list(query) {
     return request({
         url: "/monitor/online/list",
         method: "get",
@@ -10,7 +10,7 @@ export function list(query) {
 }
 
 // 强退用户
-export function forceLogout(tokenId) {
+export async function forceLogout(tokenId) {
     return request({
         url: "/monitor/online/" + tokenId,
         method: "delete",

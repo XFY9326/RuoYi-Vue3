@@ -7,7 +7,7 @@ import request from "@/utils/request";
  * @param {string} code
  * @param {string} uuid
  */
-export function login(username, password, code, uuid) {
+export async function login(username, password, code, uuid) {
     const data = {
         username,
         password,
@@ -26,7 +26,7 @@ export function login(username, password, code, uuid) {
 }
 
 // 注册方法
-export function register(data) {
+export async function register(data) {
     return request({
         url: "/register",
         headers: {
@@ -38,7 +38,7 @@ export function register(data) {
 }
 
 // 获取用户详细信息
-export function getInfo() {
+export async function getInfo() {
     return request({
         url: "/getInfo",
         method: "get",
@@ -46,7 +46,7 @@ export function getInfo() {
 }
 
 // 退出方法
-export function logout() {
+export async function logout() {
     return request({
         url: "/logout",
         method: "post",
@@ -54,7 +54,7 @@ export function logout() {
 }
 
 // 获取验证码
-export function getCodeImg() {
+export async function getCodeImg() {
     return request({
         url: "/captchaImage",
         headers: {

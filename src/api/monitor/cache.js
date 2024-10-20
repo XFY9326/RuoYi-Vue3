@@ -1,7 +1,7 @@
 import request from "@/utils/request";
 
 // 查询缓存详细
-export function getCache() {
+export async function getCache() {
     return request({
         url: "/monitor/cache",
         method: "get",
@@ -9,7 +9,7 @@ export function getCache() {
 }
 
 // 查询缓存名称列表
-export function listCacheName() {
+export async function listCacheName() {
     return request({
         url: "/monitor/cache/getNames",
         method: "get",
@@ -20,7 +20,7 @@ export function listCacheName() {
  * 查询缓存键名列表
  * @param {string} cacheName
  */
-export function listCacheKey(cacheName) {
+export async function listCacheKey(cacheName) {
     return request({
         url: "/monitor/cache/getKeys/" + cacheName,
         method: "get",
@@ -32,7 +32,7 @@ export function listCacheKey(cacheName) {
  * @param {string} cacheName
  * @param {string} cacheKey
  */
-export function getCacheValue(cacheName, cacheKey) {
+export async function getCacheValue(cacheName, cacheKey) {
     return request({
         url: "/monitor/cache/getValue/" + cacheName + "/" + cacheKey,
         method: "get",
@@ -43,7 +43,7 @@ export function getCacheValue(cacheName, cacheKey) {
  * 清理指定名称缓存
  * @param {string} cacheName
  */
-export function clearCacheName(cacheName) {
+export async function clearCacheName(cacheName) {
     return request({
         url: "/monitor/cache/clearCacheName/" + cacheName,
         method: "delete",
@@ -54,7 +54,7 @@ export function clearCacheName(cacheName) {
  * 清理指定键名缓存
  * @param {string} cacheKey
  */
-export function clearCacheKey(cacheKey) {
+export async function clearCacheKey(cacheKey) {
     return request({
         url: "/monitor/cache/clearCacheKey/" + cacheKey,
         method: "delete",
@@ -62,7 +62,7 @@ export function clearCacheKey(cacheKey) {
 }
 
 // 清理全部缓存
-export function clearCacheAll() {
+export async function clearCacheAll() {
     return request({
         url: "/monitor/cache/clearCacheAll",
         method: "delete",

@@ -1,7 +1,7 @@
 import request from "@/utils/request";
 
 // 查询部门列表
-export function listDept(query) {
+export async function listDept(query) {
     return request({
         url: "/system/dept/list",
         method: "get",
@@ -10,7 +10,7 @@ export function listDept(query) {
 }
 
 // 查询部门列表（排除节点）
-export function listDeptExcludeChild(deptId) {
+export async function listDeptExcludeChild(deptId) {
     return request({
         url: "/system/dept/list/exclude/" + deptId,
         method: "get",
@@ -18,7 +18,7 @@ export function listDeptExcludeChild(deptId) {
 }
 
 // 查询部门详细
-export function getDept(deptId) {
+export async function getDept(deptId) {
     return request({
         url: "/system/dept/" + deptId,
         method: "get",
@@ -26,7 +26,7 @@ export function getDept(deptId) {
 }
 
 // 新增部门
-export function addDept(data) {
+export async function addDept(data) {
     return request({
         url: "/system/dept",
         method: "post",
@@ -35,7 +35,7 @@ export function addDept(data) {
 }
 
 // 修改部门
-export function updateDept(data) {
+export async function updateDept(data) {
     return request({
         url: "/system/dept",
         method: "put",
@@ -44,7 +44,7 @@ export function updateDept(data) {
 }
 
 // 删除部门
-export function delDept(deptId) {
+export async function delDept(deptId) {
     return request({
         url: "/system/dept/" + deptId,
         method: "delete",

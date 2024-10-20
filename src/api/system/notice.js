@@ -1,7 +1,7 @@
 import request from "@/utils/request";
 
 // 查询公告列表
-export function listNotice(query) {
+export async function listNotice(query) {
     return request({
         url: "/system/notice/list",
         method: "get",
@@ -10,7 +10,7 @@ export function listNotice(query) {
 }
 
 // 查询公告详细
-export function getNotice(noticeId) {
+export async function getNotice(noticeId) {
     return request({
         url: "/system/notice/" + noticeId,
         method: "get",
@@ -18,7 +18,7 @@ export function getNotice(noticeId) {
 }
 
 // 新增公告
-export function addNotice(data) {
+export async function addNotice(data) {
     return request({
         url: "/system/notice",
         method: "post",
@@ -27,7 +27,7 @@ export function addNotice(data) {
 }
 
 // 修改公告
-export function updateNotice(data) {
+export async function updateNotice(data) {
     return request({
         url: "/system/notice",
         method: "put",
@@ -36,7 +36,7 @@ export function updateNotice(data) {
 }
 
 // 删除公告
-export function delNotice(noticeId) {
+export async function delNotice(noticeId) {
     return request({
         url: "/system/notice/" + noticeId,
         method: "delete",
