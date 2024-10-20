@@ -75,7 +75,12 @@
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button v-hasPermi:parent="['monitor:job:query']" icon="Operation" plain type="info" @click="handleJobLog"
+                <el-button
+                    v-hasPermi:parent="['monitor:job:query']"
+                    icon="Operation"
+                    plain
+                    type="info"
+                    @click="handleJobLog"
                     >日志
                 </el-button>
             </el-col>

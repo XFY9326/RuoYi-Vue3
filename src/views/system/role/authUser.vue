@@ -27,7 +27,12 @@
 
         <el-row :gutter="10" class="mb8">
             <el-col :span="1.5">
-                <el-button v-hasPermi:parent="['system:role:add']" icon="Plus" plain type="primary" @click="openSelectUser"
+                <el-button
+                    v-hasPermi:parent="['system:role:add']"
+                    icon="Plus"
+                    plain
+                    type="primary"
+                    @click="openSelectUser"
                     >添加用户
                 </el-button>
             </el-col>

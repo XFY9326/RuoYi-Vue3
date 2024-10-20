@@ -4,7 +4,7 @@
             <el-col :span="12" class="card-box">
                 <el-card>
                     <template #header>
-                        <Cpu style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px;" />
+                        <Cpu style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px" />
                         <span style="vertical-align: middle">CPU</span></template
                     >
                     <div class="el-table el-table--enable-row-hover el-table--medium">
@@ -61,7 +61,7 @@
             <el-col :span="12" class="card-box">
                 <el-card>
                     <template #header>
-                        <Tickets style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px;" />
+                        <Tickets style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px" />
                         <span style="vertical-align: middle">内存</span></template
                     >
                     <div class="el-table el-table--enable-row-hover el-table--medium">
@@ -145,7 +145,7 @@
             <el-col :span="24" class="card-box">
                 <el-card>
                     <template #header>
-                        <Monitor style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px;" />
+                        <Monitor style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px" />
                         <span style="vertical-align: middle">服务器信息</span></template
                     >
                     <div class="el-table el-table--enable-row-hover el-table--medium">
@@ -188,7 +188,7 @@
             <el-col :span="24" class="card-box">
                 <el-card>
                     <template #header>
-                        <CoffeeCup style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px;" />
+                        <CoffeeCup style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px" />
                         <span style="vertical-align: middle">Java虚拟机信息</span></template
                     >
                     <div class="el-table el-table--enable-row-hover el-table--medium">
@@ -255,7 +255,7 @@
             <el-col :span="24" class="card-box">
                 <el-card>
                     <template #header>
-                        <MessageBox style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px;" />
+                        <MessageBox style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px" />
                         <span style="vertical-align: middle">磁盘状态</span></template
                     >
                     <div class="el-table el-table--enable-row-hover el-table--medium">

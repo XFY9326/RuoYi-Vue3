@@ -75,7 +75,12 @@
 
                 <el-row :gutter="10" class="mb8">
                     <el-col :span="1.5">
-                        <el-button v-hasPermi:parent="['system:user:add']" icon="Plus" plain type="primary" @click="handleAdd"
+                        <el-button
+                            v-hasPermi:parent="['system:user:add']"
+                            icon="Plus"
+                            plain
+                            type="primary"
+                            @click="handleAdd"
                             >新增
                         </el-button>
                     </el-col>

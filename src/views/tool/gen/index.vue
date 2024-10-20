@@ -53,7 +53,12 @@
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button v-hasPermi:parent="['tool:gen:import']" icon="Upload" plain type="info" @click="openImportTable"
+                <el-button
+                    v-hasPermi:parent="['tool:gen:import']"
+                    icon="Upload"
+                    plain
+                    type="info"
+                    @click="openImportTable"
                     >导入
                 </el-button>
             </el-col>

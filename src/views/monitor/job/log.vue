@@ -59,7 +59,12 @@
                 </el-button>
             </el-col>
             <el-col :span="1.5">
-                <el-button v-hasPermi:parent="['monitor:job:remove']" icon="Delete" plain type="danger" @click="handleClean"
+                <el-button
+                    v-hasPermi:parent="['monitor:job:remove']"
+                    icon="Delete"
+                    plain
+                    type="danger"
+                    @click="handleClean"
                     >清空
                 </el-button>
             </el-col>
