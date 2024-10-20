@@ -1,6 +1,6 @@
 import hasRole from "./permission/hasRole";
 import hasPermi from "./permission/hasPermi";
-import clipboard from "./common/clipboard";
+import clipboard from "./module/clipboard";
 
 /**
  * @param {import("vue").App} app
