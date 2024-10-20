@@ -13,3 +13,4 @@ declare global {
         rows: Array<T>;
     }
 }
+export {};
