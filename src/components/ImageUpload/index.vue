@@ -41,6 +41,7 @@
 
 <script setup>
 import { getToken } from "@/utils/auth";
+import { isExternal } from "@/utils/validate";
 import { Plus } from "@element-plus/icons-vue";
 
 const props = defineProps({
@@ -88,7 +89,7 @@ watch(
             // 然后将数组转为对象数组
             fileList.value = list.map(item => {
                 if (typeof item === "string") {
-                    if (item.indexOf(baseUrl) === -1) {
+                    if (item.indexOf(baseUrl) === -1 && !isExternal(item)) {
                         item = { name: baseUrl + item, url: baseUrl + item };
                     } else {
                         item = { name: item, url: item };
