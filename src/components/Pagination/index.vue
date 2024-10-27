@@ -59,7 +59,7 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits();
+const emit = defineEmits(["update:page", "update:limit", "pagination"]);
 const currentPage = computed({
     get() {
         return props.page;
@@ -83,14 +83,14 @@ function handleSizeChange(val) {
     }
     emit("pagination", { page: currentPage.value, limit: val });
     if (props.autoScroll) {
-        scrollTo(0, 800);
+        scrollTo(0, 800, undefined);
     }
 }
 
 function handleCurrentChange(val) {
     emit("pagination", { page: val, limit: pageSize.value });
     if (props.autoScroll) {
-        scrollTo(0, 800);
+        scrollTo(0, 800, undefined);
     }
 }
 </script>

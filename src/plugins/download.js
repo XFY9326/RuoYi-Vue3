@@ -77,7 +77,7 @@ export default {
     /**
      * @param {Blob | string} text
      * @param {string} name
-     * @param {FileSaver.FileSaverOptions} opts
+     * @param {import("file-saver").FileSaver.FileSaverOptions} opts
      */
     saveAs(text, name, opts) {
         saveAs(text, name, opts);

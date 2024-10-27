@@ -6,86 +6,98 @@ export default {
     /**
      * 消息提示
      * @param {import("element-plus").MessageParamsWithType} content
+     * @returns {import("element-plus").MessageHandler}
      */
     msg(content) {
-        ElMessage.info(content);
+        return ElMessage.info(content);
     },
     /**
      * 错误消息
      * @param {import("element-plus").MessageParamsWithType} content
+     * @returns {import("element-plus").MessageHandler}
      */
     msgError(content) {
-        ElMessage.error(content);
+        return ElMessage.error(content);
     },
     /**
      * 成功消息
      * @param {import("element-plus").MessageParamsWithType} content
+     * @returns {import("element-plus").MessageHandler}
      */
     msgSuccess(content) {
-        ElMessage.success(content);
+        return ElMessage.success(content);
     },
     /**
      * 警告消息
      * @param {import("element-plus").MessageParamsWithType} content
+     * @returns {import("element-plus").MessageHandler}
      */
     msgWarning(content) {
-        ElMessage.warning(content);
+        return ElMessage.warning(content);
     },
     /**
      * 弹出提示
      * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     * @returns {Promise<import("element-plus").MessageBoxData>}
      */
     alert(content) {
-        ElMessageBox.alert(content, "系统提示");
+        return ElMessageBox.alert(content, "系统提示");
     },
     /**
      * 错误提示
      * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     * @returns {Promise<import("element-plus").MessageBoxData>}
      */
     alertError(content) {
-        ElMessageBox.alert(content, "系统提示", { type: "error" });
+        return ElMessageBox.alert(content, "系统提示", { type: "error" });
     },
     /**
      * 成功提示
      * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     * @returns {Promise<import("element-plus").MessageBoxData>}
      */
     alertSuccess(content) {
-        ElMessageBox.alert(content, "系统提示", { type: "success" });
+        return ElMessageBox.alert(content, "系统提示", { type: "success" });
     },
     /**
      * 警告提示
      * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     * @returns {Promise<import("element-plus").MessageBoxData>}
      */
     alertWarning(content) {
-        ElMessageBox.alert(content, "系统提示", { type: "warning" });
+        return ElMessageBox.alert(content, "系统提示", { type: "warning" });
     },
     /**
      * 通知提示
-     * @param {import("element-plus").ElMessageBoxOptions["message"]} content
+     * @param {import("element-plus").NotificationParamsTyped} content
+     * @returns {import("element-plus").NotificationHandle}
      */
     notify(content) {
-        ElNotification.info(content);
+        return ElNotification.info(content);
     },
     /**
      * 错误通知
      * @param {import("element-plus").NotificationParamsTyped} content
+     * @returns {import("element-plus").NotificationHandle}
      */
     notifyError(content) {
-        ElNotification.error(content);
+        return ElNotification.error(content);
     },
     /**
      * 成功通知
      * @param {import("element-plus").NotificationParamsTyped} content
+     * @returns {import("element-plus").NotificationHandle}
      */
     notifySuccess(content) {
-        ElNotification.success(content);
+        return ElNotification.success(content);
     },
     /**
      * 警告通知
      * @param {import("element-plus").NotificationParamsTyped} content
+     * @returns {import("element-plus").NotificationHandle}
      */
     notifyWarning(content) {
-        ElNotification.warning(content);
+        return ElNotification.warning(content);
     },
     /**
      * 确认窗体

@@ -79,7 +79,7 @@ const usePermissionStore = defineStore("permission", {
  * @param {RouteOption[]} asyncRouterMap
  * @param {RouteOption | boolean} lastRouter
  * @param {boolean} type
- * @return {RouteOption[]}
+ * @returns {RouteOption[]}
  */
 function filterAsyncRouter(asyncRouterMap, lastRouter = false, type = false) {
     return asyncRouterMap.filter(route => {
@@ -112,7 +112,7 @@ function filterAsyncRouter(asyncRouterMap, lastRouter = false, type = false) {
  * 遍历后台传来的路由字符串，转换为组件对象
  * @param {RouteOption[]} childrenMap
  * @param {RouteOption | boolean} lastRouter
- * @return {RouteOption[]}
+ * @returns {RouteOption[]}
  */
 function filterChildren(childrenMap, lastRouter = false) {
     /**
@@ -148,7 +148,7 @@ function filterChildren(childrenMap, lastRouter = false) {
 /**
  * 动态路由遍历，验证是否具备权限
  * @param {RouteOption[]} routes
- * @return {RouteOption[]}
+ * @returns {RouteOption[]}
  */
 export function filterDynamicRoutes(routes) {
     /**

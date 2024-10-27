@@ -134,7 +134,7 @@ export function selectDictLabels(data, value, separator) {
 /**
  * 字符串格式化(%s )
  * @param {string} str
- * @return {string}
+ * @returns {string}
  */
 export function sprintf(str) {
     let args = arguments,
@@ -154,7 +154,7 @@ export function sprintf(str) {
 /**
  * 转换字符串，undefined,null等转化为""
  * @param {string} str
- * @return {string}
+ * @returns {string}
  */
 export function parseStrEmpty(str) {
     if (!str || str === "undefined" || str === "null") {

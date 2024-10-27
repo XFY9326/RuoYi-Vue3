@@ -4,7 +4,7 @@
             <el-col :span="8">
                 <el-card style="height: calc(100vh - 125px)">
                     <template #header>
-                        <Collection style="width: 1em; height: 1em; vertical-align: middle" />
+                        <Collection style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px" />
                         <span style="vertical-align: middle">缓存列表</span>
                         <el-button
                             icon="Refresh"
@@ -50,7 +50,7 @@
             <el-col :span="8">
                 <el-card style="height: calc(100vh - 125px)">
                     <template #header>
-                        <Key style="width: 1em; height: 1em; vertical-align: middle" />
+                        <Key style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px" />
                         <span style="vertical-align: middle">键名列表</span>
                         <el-button
                             icon="Refresh"
@@ -93,7 +93,7 @@
             <el-col :span="8">
                 <el-card :bordered="false" style="height: calc(100vh - 125px)">
                     <template #header>
-                        <Document style="width: 1em; height: 1em; vertical-align: middle" />
+                        <Document style="width: 1em; height: 1em; vertical-align: middle; margin-right: 10px" />
                         <span style="vertical-align: middle">缓存内容</span>
                         <el-button
                             icon="Refresh"

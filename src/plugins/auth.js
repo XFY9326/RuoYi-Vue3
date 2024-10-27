@@ -17,7 +17,7 @@ function authPermission(permission) {
 }
 
 /**
- * @param {string} permission
+ * @param {string} role
  * @returns {boolean}
  */
 function authRole(role) {

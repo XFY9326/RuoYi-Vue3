@@ -202,7 +202,7 @@ export function getTime(type) {
  * @param {Function} func
  * @param {number} wait
  * @param {boolean} immediate
- * @return {*}
+ * @returns {*}
  */
 export function debounce(func, wait, immediate) {
     let timeout, args, context, timestamp, result;
@@ -368,7 +368,7 @@ export const beautifierConf = {
 /**
  * 首字母大小
  * @param {string} str
- * @return {string}
+ * @returns {string}
  */
 export function titleCase(str) {
     return str.replace(/( |^)[a-z]/g, L => L.toUpperCase());
@@ -377,7 +377,7 @@ export function titleCase(str) {
 /**
  * 下划转驼峰
  * @param {string} str
- * @return {string}
+ * @returns {string}
  */
 export function camelCase(str) {
     return str.replace(/_[a-z]/g, str1 => str1.substr(-1).toUpperCase());

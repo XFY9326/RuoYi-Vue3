@@ -1,7 +1,7 @@
 <template>
     <section class="app-main">
         <router-view v-slot="{ Component, route }">
-            <transition mode="out-in" name="fade-transform">
+            <transition mode="out-in" name="fade" enter-from-class="fade-transform-enter" appear>
                 <keep-alive :include="tagsViewStore.cachedViews">
                     <component :is="Component" v-if="!route.meta.link" :key="route.path" />
                 </keep-alive>

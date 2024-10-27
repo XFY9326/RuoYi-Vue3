@@ -52,12 +52,12 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<{ visitedViews: TagView[]; cachedViews: string[] }>}
+         * @returns {Promise<{ visitedViews: TagView[]; cachedViews: string[] }>}
          */
         delView(view) {
-            return new Promise(resolve => {
-                this.delVisitedView(view);
-                this.delCachedView(view);
+            return new Promise(async resolve => {
+                await this.delVisitedView(view);
+                await this.delCachedView(view);
                 resolve({
                     visitedViews: [...this.visitedViews],
                     cachedViews: [...this.cachedViews],
@@ -66,7 +66,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]>}
+         * @returns {Promise<TagView[]>}
          */
         delVisitedView(view) {
             return new Promise(resolve => {
@@ -82,7 +82,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]>}
+         * @returns {Promise<TagView[]>}
          */
         delIframeView(view) {
             return new Promise(resolve => {
@@ -92,7 +92,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]>}
+         * @returns {Promise<TagView[]>}
          */
         delCachedView(view) {
             return new Promise(resolve => {
@@ -103,12 +103,12 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<{ visitedViews: TagView[]; cachedViews: string[] }>}
+         * @returns {Promise<{ visitedViews: TagView[]; cachedViews: string[] }>}
          */
         delOthersViews(view) {
-            return new Promise(resolve => {
-                this.delOthersVisitedViews(view);
-                this.delOthersCachedViews(view);
+            return new Promise(async resolve => {
+                await this.delOthersVisitedViews(view);
+                await this.delOthersCachedViews(view);
                 resolve({
                     visitedViews: [...this.visitedViews],
                     cachedViews: [...this.cachedViews],
@@ -117,7 +117,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]>}
+         * @returns {Promise<TagView[]>}
          */
         delOthersVisitedViews(view) {
             return new Promise(resolve => {
@@ -130,7 +130,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]>}
+         * @returns {Promise<TagView[]>}
          */
         delOthersCachedViews(view) {
             return new Promise(resolve => {
@@ -145,12 +145,12 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<{ visitedViews: TagView[]; cachedViews: string[] }>}
+         * @returns {Promise<{ visitedViews: TagView[]; cachedViews: string[] }>}
          */
         delAllViews(view) {
-            return new Promise(resolve => {
-                this.delAllVisitedViews(view);
-                this.delAllCachedViews(view);
+            return new Promise(async resolve => {
+                await this.delAllVisitedViews(view);
+                await this.delAllCachedViews(view);
                 resolve({
                     visitedViews: [...this.visitedViews],
                     cachedViews: [...this.cachedViews],
@@ -159,7 +159,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]>}
+         * @returns {Promise<TagView[]>}
          */
         delAllVisitedViews(view) {
             return new Promise(resolve => {
@@ -170,7 +170,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]>}
+         * @returns {Promise<TagView[]>}
          */
         delAllCachedViews(view) {
             return new Promise(resolve => {
@@ -191,7 +191,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]|boolean|undefined>}
+         * @returns {Promise<TagView[]|boolean|undefined>}
          */
         delRightTags(view) {
             return new Promise(resolve => {
@@ -218,7 +218,7 @@ const useTagsViewStore = defineStore("tags-view", {
         },
         /**
          * @param {TagView} view
-         * @return {Promise<TagView[]|boolean|undefined>}
+         * @returns {Promise<TagView[]|boolean|undefined>}
          */
         delLeftTags(view) {
             return new Promise(resolve => {

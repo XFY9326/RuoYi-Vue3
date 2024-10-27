@@ -13,7 +13,7 @@ const useDictStore = defineStore("dict", {
         /**
          * 获取字典
          * @param {string} _key
-         * @return {DictDataOption[] | null}
+         * @returns {DictDataOption[] | null}
          */
         getDict(_key) {
             if (_key == null && _key === "") {
@@ -45,7 +45,7 @@ const useDictStore = defineStore("dict", {
         /**
          * 删除字典
          * @param {string} _key
-         * @return {boolean}
+         * @returns {boolean}
          */
         removeDict(_key) {
             let bln = false;

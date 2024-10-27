@@ -5,6 +5,9 @@
 <script setup>
 import SvgComponent from "~virtual/svg-component";
 
+/**
+ * @type {{iconClass: SvgName, className: string, color: string}}
+ */
 const props = defineProps({
     iconClass: {
         type: String,
@@ -31,6 +34,7 @@ const svgStyle = computed(() => (props.color ? `color: ${props.color}` : undefin
     margin-right: 12px;
     position: relative;
 }
+
 .svg-icon {
     width: 1em;
     height: 1em;
