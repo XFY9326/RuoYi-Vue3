@@ -69,6 +69,12 @@ ry.sh backup 001
 ry.sh rollback 001
 ```
 
+注意，由于Git会修改换行符号，执行shell脚本前建议强制将CRLF转为LF
+
+```shell
+sed -i "s/\r$//" ry.sh
+```
+
 ## Swagger
 
 由于后端使用SpringDoc需要反向代理支持，所有Swagger相关的Url都被定位到`/api-docs`路径下
