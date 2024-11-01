@@ -60,7 +60,13 @@ const values = computed(() => {
 const unmatched = computed(() => {
     unmatchArray.value = [];
     // 没有value不显示
-    if (props.value === null || typeof props.value === "undefined" || props.value === "" || props.options.length === 0)
+    if (
+        props.value === null ||
+        typeof props.value === "undefined" ||
+        props.value === "" ||
+        !Array.isArray(props.options) ||
+        props.options.length === 0
+    )
         return false;
     // 传入值为数组
     let unmatched = false; // 添加一个标志来判断是否有未匹配项
