@@ -1,5 +1,6 @@
 import { getInfo, login, logout } from "@/api/login";
 import { getToken, removeToken, setToken } from "@/utils/auth";
+import { isHttp, isEmpty } from "@/utils/validate";
 import defAva from "@/assets/images/profile.svg";
 
 const useUserStore = defineStore("user", {
@@ -43,11 +44,10 @@ const useUserStore = defineStore("user", {
                 getInfo()
                     .then(res => {
                         const user = res.user;
-                        const avatar =
-                            user.avatar === "" || user.avatar == null
-                                ? defAva
-                                : import.meta.env.VITE_APP_BASE_API + user.avatar;
-
+                        let avatar = user.avatar || "";
+                        if (!isHttp(avatar)) {
+                            avatar = isEmpty(avatar) ? defAva : import.meta.env.VITE_APP_BASE_API + avatar;
+                        }
                         if (res.roles && res.roles.length > 0) {
                             // 验证返回的roles是否是一个非空数组
                             this.roles = res.roles;
