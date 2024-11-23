@@ -9,8 +9,9 @@ const dtsHeaderComment = `/* eslint-disable */
 `;
 
 /**
- * @param {string} sourcePath
- * @param {string} targetPath
+ * 复制 dts 文件
+ * @param {string} sourcePath 源文件路径
+ * @param {string} targetPath 目标文件路径
  * @returns {Promise<void>}
  */
 async function copyDTS(sourcePath, targetPath) {
@@ -25,7 +26,8 @@ async function copyDTS(sourcePath, targetPath) {
 }
 
 /**
- * @returns {import("vite").PluginOption}
+ * 创建 element-plus-typing-copy 插件
+ * @returns {import("vite").PluginOption} vite 插件
  */
 export default function createElementPlusTypingCopy() {
     return {

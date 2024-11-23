@@ -3,6 +3,7 @@ import Components from "unplugin-vue-components/vite";
 import path from "path";
 
 /**
+ * 配置自动导入依赖
  * @returns {import("vite").PluginOption[]}
  */
 export default function createAutoImport() {

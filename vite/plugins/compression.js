@@ -1,8 +1,9 @@
 import { compression } from "vite-plugin-compression2";
 
 /**
- * @param env {Record<string, string>}
- * @returns {import("vite").PluginOption[]}
+ * 创建压缩插件
+ * @param {Record<string, string>} env 环境变量
+ * @returns {import("vite").PluginOption[]} 插件
  */
 export default function createCompression(env) {
     const { VITE_BUILD_COMPRESS } = env;

@@ -8,9 +8,10 @@ import createElementPlusTypingCopy from "./element-plus-typing-copy";
 import createZipPack from "./zip-pack";
 
 /**
- * @param {Record<string, string>} env
- * @param {boolean} isBuild
- * @returns {import("vite").PluginOption[]}
+ * 配置 vite 插件
+ * @param {Record<string, string>} env 环境变量
+ * @param {boolean} isBuild 是否为打包模式
+ * @returns {import("vite").PluginOption[]} vite 插件
  */
 export default function createVitePlugins(env, isBuild = false) {
     const vitePlugins = [

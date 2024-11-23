@@ -2,7 +2,8 @@ import UnpluginSvgComponent from "unplugin-svg-component/vite";
 import path from "path";
 
 /**
- * @returns {import("vite").PluginOption}
+ * 创建 svg 图标插件
+ * @returns {import("vite").PluginOption} vite 插件
  */
 export default function createSvgIcon() {
     return UnpluginSvgComponent({

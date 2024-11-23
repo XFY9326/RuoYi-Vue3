@@ -1,8 +1,9 @@
 import zipPack from "vite-plugin-zip-pack";
 
 /**
- * @param env {Record<string, string>}
- * @returns {import("vite").PluginOption}
+ * 压缩打包
+ * @param {Record<string, string>} env 环境变量
+ * @returns {import("vite").PluginOption} 插件
  */
 export default function createZipPack(env) {
     return zipPack({
