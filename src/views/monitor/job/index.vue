@@ -266,7 +266,7 @@
         </el-dialog>
 
         <el-dialog v-model="openCron" append-to-body destroy-on-close title="Cron表达式生成器">
-            <crontab ref="crontabRef" :expression="expression" @fill="crontabFill" @hide="openCron = false"></crontab>
+            <crontab ref="crontabRef" :expression="expression" @fill="crontabFill" @hide="(openCron = false)"></crontab>
         </el-dialog>
 
         <!-- 任务日志详细 -->
@@ -314,7 +314,7 @@
             </el-form>
             <template #footer>
                 <div class="dialog-footer">
-                    <el-button @click="openView = false">关 闭</el-button>
+                    <el-button @click="(openView = false)">关 闭</el-button>
                 </div>
             </template>
         </el-dialog>

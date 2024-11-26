@@ -133,7 +133,7 @@
                                 </el-button>
                                 <template #dropdown>
                                     <el-dropdown-menu>
-                                        <el-dropdown-item @click="info.genPath = '/'"
+                                        <el-dropdown-item @click="(info.genPath = '/')"
                                             >恢复默认的生成基础路径
                                         </el-dropdown-item>
                                     </el-dropdown-menu>

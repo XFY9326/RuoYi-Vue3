@@ -1,7 +1,7 @@
 <template>
     <div class="app-container">
         <el-row :gutter="20">
-            <splitpanes class="default-theme">
+            <splitpanes :horizontal="appStore.device === 'mobile'" class="default-theme">
                 <!--部门数据-->
                 <pane size="16">
                     <el-col>
@@ -30,8 +30,8 @@
                     </el-col>
                 </pane>
                 <!--用户数据-->
-                <pane>
-                    <el-col size="84">
+                <pane size="84">
+                    <el-col>
                         <el-form
                             :model="queryParams"
                             ref="queryRef"
@@ -420,7 +420,7 @@
             <template #footer>
                 <div class="dialog-footer">
                     <el-button type="primary" @click="submitFileForm">确 定</el-button>
-                    <el-button @click="upload.open = false">取 消</el-button>
+                    <el-button @click="(upload.open = false)">取 消</el-button>
                 </div>
             </template>
         </el-dialog>
@@ -429,6 +429,7 @@
 
 <script name="User" setup>
 import { getToken } from "@/utils/auth";
+import useAppStore from "@/store/modules/app";
 import {
     addUser,
     changeUserStatus,
@@ -444,6 +445,7 @@ import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 
 const router = useRouter();
+const appStore = useAppStore();
 const { proxy } = getCurrentInstance();
 const { sys_normal_disable, sys_user_sex } = proxy.useDict("sys_normal_disable", "sys_user_sex");
 
