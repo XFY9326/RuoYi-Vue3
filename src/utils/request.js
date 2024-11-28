@@ -6,6 +6,7 @@ import { blobValidate, tansParams } from "@/utils/ruoyi";
 import cache from "@/plugins/cache";
 import { saveAs } from "file-saver";
 import useUserStore from "@/store/modules/user";
+import { healthCheck } from "@/api/health";
 
 let downloadLoadingInstance;
 // 是否显示重新登录
@@ -124,14 +125,19 @@ service.interceptors.response.use(
         }
     },
     error => {
-        console.log("err" + error);
         let { message } = error;
         if (message === "Network Error") {
             message = "后端接口连接异常";
         } else if (message.includes("timeout")) {
             message = "系统接口请求超时";
         } else if (message.includes("Request failed with status code")) {
-            message = "系统接口" + message.substring(0, message.length - 3) + "异常";
+            message = `系统接口异常：${error.status}`;
+            Promise.resolve(
+                healthCheck().then(res => {
+                    if (!res)
+                        ElMessage({ message: "服务不可用，请稍后重试或联系管理员", type: "error", duration: 5 * 1000 });
+                })
+            );
         }
         ElMessage({ message: message, type: "error", duration: 5 * 1000 });
         return Promise.reject(error);

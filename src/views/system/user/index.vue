@@ -420,7 +420,7 @@
             <template #footer>
                 <div class="dialog-footer">
                     <el-button type="primary" @click="submitFileForm">确 定</el-button>
-                    <el-button @click="(upload.open = false)">取 消</el-button>
+                    <el-button @click="upload.open = false">取 消</el-button>
                 </div>
             </template>
         </el-dialog>

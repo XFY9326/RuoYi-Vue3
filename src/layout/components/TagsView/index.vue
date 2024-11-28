@@ -159,11 +159,7 @@ function addTags() {
     const { name } = route;
     if (name) {
         useTagsViewStore().addView(route);
-        if (route.meta.link) {
-            useTagsViewStore().addIframeView(route);
-        }
     }
-    return false;
 }
 
 function moveToCurrentTag() {

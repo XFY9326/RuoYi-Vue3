@@ -161,7 +161,7 @@
             </el-form>
             <template #footer>
                 <div class="dialog-footer">
-                    <el-button @click="(open = false)">关 闭</el-button>
+                    <el-button @click="open = false">关 闭</el-button>
                 </div>
             </template>
         </el-dialog>
