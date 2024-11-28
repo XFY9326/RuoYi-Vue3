@@ -133,7 +133,7 @@ watch(valueId, () => {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/variables.module.scss";
+@use "@/assets/styles/variables.module.scss" as *;
 
 .el-tree-select {
     width: 100%;
