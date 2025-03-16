@@ -155,7 +155,7 @@
                             icon="Refresh"
                             link
                             type="primary"
-                            @click="handleSyncDb(scope.row)"
+                            @click="handleSynchDb(scope.row)"
                         ></el-button>
                     </el-tooltip>
                     <el-tooltip content="生成代码" placement="top">
@@ -287,7 +287,7 @@ function handleGenTable(row) {
 }
 
 /** 同步数据库操作 */
-function handleSyncDb(row) {
+function handleSynchDb(row) {
     const tableName = row.tableName;
     proxy.$modal
         .confirm('确认要强制同步"' + tableName + '"表结构吗？')

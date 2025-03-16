@@ -82,9 +82,9 @@
                     </el-form-item>
                     <el-form-item v-if="activeData.align !== undefined" label="垂直排列">
                         <el-radio-group v-model="activeData.align">
-                            <el-radio-button label="top" />
-                            <el-radio-button label="middle" />
-                            <el-radio-button label="bottom" />
+                            <el-radio-button value="top">top</el-radio-button>
+                            <el-radio-button value="middle">middle</el-radio-button>
+                            <el-radio-button value="bottom">bottom</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item v-if="activeData.labelWidth !== undefined" label="标签宽度">
@@ -125,14 +125,14 @@
                     <el-form-item v-if="activeData['prefix-icon'] !== undefined" label="前图标">
                         <el-input v-model="activeData['prefix-icon']" placeholder="请输入前图标名称">
                             <template #append>
-                                <el-button icon="Pointer" @click="openIconsDialog('prefix-icon')"> 选择 </el-button>
+                                <el-button icon="Pointer" @click="openIconsDialog('prefix-icon')"> 选择</el-button>
                             </template>
                         </el-input>
                     </el-form-item>
                     <el-form-item v-if="activeData['suffix-icon'] !== undefined" label="后图标">
                         <el-input v-model="activeData['suffix-icon']" placeholder="请输入后图标名称">
                             <template #append>
-                                <el-button icon="Pointer" @click="openIconsDialog('suffix-icon')"> 选择 </el-button>
+                                <el-button icon="Pointer" @click="openIconsDialog('suffix-icon')"> 选择</el-button>
                             </template>
                         </el-input>
                     </el-form-item>
@@ -159,13 +159,13 @@
                     </el-form-item>
                     <el-form-item v-if="activeData.tag === 'el-input-number'" label="按钮位置">
                         <el-radio-group v-model="activeData['controls-position']">
-                            <el-radio-button label=""> 默认 </el-radio-button>
-                            <el-radio-button label="right"> 右侧 </el-radio-button>
+                            <el-radio-button value=""> 默认</el-radio-button>
+                            <el-radio-button value="right"> 右侧</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item v-if="activeData.maxlength !== undefined" label="最多输入">
                         <el-input v-model="activeData.maxlength" placeholder="请输入字符长度">
-                            <template slot="append"> 个字符 </template>
+                            <template slot="append"> 个字符</template>
                         </el-input>
                     </el-form-item>
                     <el-form-item v-if="activeData['active-text'] !== undefined" label="开启提示">
@@ -239,9 +239,9 @@
                     </el-form-item>
                     <el-form-item v-if="activeData['list-type'] !== undefined" label="列表类型">
                         <el-radio-group v-model="activeData['list-type']" size="small">
-                            <el-radio-button label="text"> text </el-radio-button>
-                            <el-radio-button label="picture"> picture </el-radio-button>
-                            <el-radio-button label="picture-card"> picture-card </el-radio-button>
+                            <el-radio-button value="text"> text</el-radio-button>
+                            <el-radio-button value="picture"> picture</el-radio-button>
+                            <el-radio-button value="picture-card"> picture-card</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item
@@ -315,8 +315,8 @@
                         <el-divider>选项</el-divider>
                         <el-form-item label="数据类型">
                             <el-radio-group v-model="activeData.dataType" size="small">
-                                <el-radio-button label="dynamic"> 动态数据 </el-radio-button>
-                                <el-radio-button label="static"> 静态数据 </el-radio-button>
+                                <el-radio-button value="dynamic"> 动态数据</el-radio-button>
+                                <el-radio-button value="static"> 静态数据</el-radio-button>
                             </el-radio-group>
                         </el-form-item>
 
@@ -357,8 +357,8 @@
 
                     <el-form-item v-if="activeData.optionType !== undefined" label="选项样式">
                         <el-radio-group v-model="activeData.optionType">
-                            <el-radio-button label="default"> 默认 </el-radio-button>
-                            <el-radio-button label="button"> 按钮 </el-radio-button>
+                            <el-radio-button value="default"> 默认</el-radio-button>
+                            <el-radio-button value="button"> 按钮</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item v-if="activeData['active-color'] !== undefined" label="开启颜色">
@@ -414,9 +414,9 @@
                         label="选项尺寸"
                     >
                         <el-radio-group v-model="activeData.size">
-                            <el-radio-button label="large"> 较大 </el-radio-button>
-                            <el-radio-button label="default"> 默认 </el-radio-button>
-                            <el-radio-button label="small"> 较小 </el-radio-button>
+                            <el-radio-button value="large"> 较大</el-radio-button>
+                            <el-radio-button value="default"> 默认</el-radio-button>
+                            <el-radio-button value="small"> 较小</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item v-if="activeData['show-word-limit'] !== undefined" label="输入统计">
@@ -522,16 +522,16 @@
                     </el-form-item>
                     <el-form-item label="表单尺寸">
                         <el-radio-group v-model="formConf.size">
-                            <el-radio-button label="large"> 较大 </el-radio-button>
-                            <el-radio-button label="default"> 默认 </el-radio-button>
-                            <el-radio-button label="small"> 较小 </el-radio-button>
+                            <el-radio-button value="large"> 较大</el-radio-button>
+                            <el-radio-button value="default"> 默认</el-radio-button>
+                            <el-radio-button value="small"> 较小</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item label="标签对齐">
                         <el-radio-group v-model="formConf.labelPosition">
-                            <el-radio-button label="left"> 左对齐 </el-radio-button>
-                            <el-radio-button label="right"> 右对齐 </el-radio-button>
-                            <el-radio-button label="top"> 顶部对齐 </el-radio-button>
+                            <el-radio-button value="left"> 左对齐</el-radio-button>
+                            <el-radio-button value="right"> 右对齐</el-radio-button>
+                            <el-radio-button value="top"> 顶部对齐</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item label="标签宽度">
@@ -553,7 +553,7 @@
             </el-scrollbar>
         </div>
         <icons-dialog v-model="iconsVisible" :current="activeData[currentIconModel]" @select="setIcon" />
-        <treeNode-dialog v-model="dialogVisible" @commit="addNode" />
+        <TreeNodeDialog v-model="dialogVisible" @commit="addNode" />
     </div>
 </template>
 
@@ -562,6 +562,7 @@ import draggable from "vuedraggable";
 import { isNumberStr } from "@/utils/index";
 import IconsDialog from "./IconsDialog";
 import { inputComponents, selectComponents } from "@/utils/generator/config";
+import TreeNodeDialog from "@/views/tool/build/TreeNodeDialog.vue";
 
 const { proxy } = getCurrentInstance();
 const dateTimeFormat = {
@@ -717,6 +718,7 @@ function addReg() {
         message: "",
     });
 }
+
 function addSelectItem() {
     props.activeData.options.push({
         label: "",
@@ -766,6 +768,7 @@ function renderContent(h, { node, data, store }) {
         ]
     );
 }
+
 function append(data) {
     if (!data.children) {
         data.children = [];
@@ -773,12 +776,14 @@ function append(data) {
     dialogVisible.value = true;
     currentNode.value = data.children;
 }
+
 function remove(node, data) {
     const { parent } = node;
     const children = parent.data.children || parent.data;
     const index = children.findIndex(d => d.id === data.id);
     children.splice(index, 1);
 }
+
 function addNode(data) {
     currentNode.value.push(data);
 }
@@ -786,6 +791,7 @@ function addNode(data) {
 function setOptionValue(item, val) {
     item.value = isNumberStr(val) ? +val : val;
 }
+
 function setDefaultValue(val) {
     if (Array.isArray(val)) {
         return val.join(",");

@@ -49,7 +49,7 @@ const componentChild = {
                       h(
                           resolveComponent("el-checkbox-button"),
                           {
-                              label: item.value,
+                              value: item.value,
                           },
                           () => item.label
                       )
@@ -58,7 +58,7 @@ const componentChild = {
                       h(
                           resolveComponent("el-radio"),
                           {
-                              label: item.value,
+                              value: item.value,
                               border: conf.border,
                           },
                           () => item.label
@@ -73,7 +73,7 @@ const componentChild = {
                       h(
                           resolveComponent("el-checkbox-button"),
                           {
-                              label: item.value,
+                              value: item.value,
                           },
                           () => item.label
                       )
@@ -82,7 +82,7 @@ const componentChild = {
                       h(
                           resolveComponent("el-checkbox"),
                           {
-                              label: item.value,
+                              value: item.value,
                               border: conf.border,
                           },
                           () => item.label

@@ -1,15 +1,15 @@
 <template>
     <el-form>
         <el-form-item>
-            <el-radio v-model="radioValue" :label="1"> 日，允许的通配符[, - * ? / L W]</el-radio>
+            <el-radio v-model="radioValue" :value="1"> 日，允许的通配符[, - * ? / L W]</el-radio>
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="2"> 不指定</el-radio>
+            <el-radio v-model="radioValue" :value="2"> 不指定</el-radio>
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="3">
+            <el-radio v-model="radioValue" :value="3">
                 周期从
                 <el-input-number v-model="cycle01" :max="30" :min="1" />
                 -
@@ -19,7 +19,7 @@
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="4">
+            <el-radio v-model="radioValue" :value="4">
                 从
                 <el-input-number v-model="average01" :max="30" :min="1" />
                 号开始，每
@@ -29,7 +29,7 @@
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="5">
+            <el-radio v-model="radioValue" :value="5">
                 每月
                 <el-input-number v-model="workday" :max="31" :min="1" />
                 号最近的那个工作日
@@ -37,11 +37,11 @@
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="6"> 本月最后一天</el-radio>
+            <el-radio v-model="radioValue" :value="6"> 本月最后一天</el-radio>
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="7">
+            <el-radio v-model="radioValue" :value="7">
                 指定
                 <el-select v-model="checkboxList" :multiple-limit="10" clearable multiple placeholder="可多选">
                     <el-option v-for="item in 31" :key="item" :label="item" :value="item" />

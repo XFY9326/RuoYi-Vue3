@@ -3,7 +3,7 @@
         <el-form ref="codeTypeForm" :model="formData" :rules="rules" label-width="100px">
             <el-form-item label="生成类型" prop="type">
                 <el-radio-group v-model="formData.type">
-                    <el-radio-button v-for="(item, index) in typeOptions" :key="index" :label="item.value">
+                    <el-radio-button v-for="(item, index) in typeOptions" :key="index" :value="item.value">
                         {{ item.label }}
                     </el-radio-button>
                 </el-radio-group>

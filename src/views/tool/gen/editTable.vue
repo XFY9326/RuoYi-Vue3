@@ -35,22 +35,22 @@
 
                     <el-table-column label="插入" min-width="5%">
                         <template #default="scope">
-                            <el-checkbox v-model="scope.row.isInsert" false-label="0" true-label="1"></el-checkbox>
+                            <el-checkbox v-model="scope.row.isInsert" false-value="0" true-value="1"></el-checkbox>
                         </template>
                     </el-table-column>
                     <el-table-column label="编辑" min-width="5%">
                         <template #default="scope">
-                            <el-checkbox v-model="scope.row.isEdit" false-label="0" true-label="1"></el-checkbox>
+                            <el-checkbox v-model="scope.row.isEdit" false-value="0" true-value="1"></el-checkbox>
                         </template>
                     </el-table-column>
                     <el-table-column label="列表" min-width="5%">
                         <template #default="scope">
-                            <el-checkbox v-model="scope.row.isList" false-label="0" true-label="1"></el-checkbox>
+                            <el-checkbox v-model="scope.row.isList" false-value="0" true-value="1"></el-checkbox>
                         </template>
                     </el-table-column>
                     <el-table-column label="查询" min-width="5%">
                         <template #default="scope">
-                            <el-checkbox v-model="scope.row.isQuery" false-label="0" true-label="1"></el-checkbox>
+                            <el-checkbox v-model="scope.row.isQuery" false-value="0" true-value="1"></el-checkbox>
                         </template>
                     </el-table-column>
                     <el-table-column label="查询方式" min-width="10%">
@@ -69,7 +69,7 @@
                     </el-table-column>
                     <el-table-column label="必填" min-width="5%">
                         <template #default="scope">
-                            <el-checkbox v-model="scope.row.isRequired" false-label="0" true-label="1"></el-checkbox>
+                            <el-checkbox v-model="scope.row.isRequired" false-value="0" true-value="1"></el-checkbox>
                         </template>
                     </el-table-column>
                     <el-table-column label="显示类型" min-width="12%">

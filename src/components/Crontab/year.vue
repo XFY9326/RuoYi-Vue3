@@ -1,15 +1,15 @@
 <template>
     <el-form>
         <el-form-item>
-            <el-radio v-model="radioValue" :label="1"> 不填，允许的通配符[, - * /]</el-radio>
+            <el-radio v-model="radioValue" :value="1"> 不填，允许的通配符[, - * /]</el-radio>
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="2"> 每年</el-radio>
+            <el-radio v-model="radioValue" :value="2"> 每年</el-radio>
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="3">
+            <el-radio v-model="radioValue" :value="3">
                 周期从
                 <el-input-number v-model="cycle01" :max="2098" :min="fullYear" />
                 -
@@ -18,7 +18,7 @@
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="4">
+            <el-radio v-model="radioValue" :value="4">
                 从
                 <el-input-number v-model="average01" :max="2098" :min="fullYear" />
                 年开始，每
@@ -28,7 +28,7 @@
         </el-form-item>
 
         <el-form-item>
-            <el-radio v-model="radioValue" :label="5">
+            <el-radio v-model="radioValue" :value="5">
                 指定
                 <el-select v-model="checkboxList" :multiple-limit="8" clearable multiple placeholder="可多选">
                     <el-option

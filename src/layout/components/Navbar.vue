@@ -30,9 +30,6 @@
                 <el-dropdown class="right-menu-item hover-effect" trigger="click" @command="handleCommand">
                     <div class="avatar-wrapper">
                         <img :src="userStore.avatar" alt="avatar" class="user-avatar" />
-                        <el-icon>
-                            <caret-bottom />
-                        </el-icon>
                     </div>
                     <template #dropdown>
                         <el-dropdown-menu>
@@ -64,7 +61,6 @@ import HeaderSearch from "@/components/HeaderSearch";
 import useAppStore from "@/store/modules/app";
 import useUserStore from "@/store/modules/user";
 import useSettingsStore from "@/store/modules/settings";
-import { CaretBottom } from "@element-plus/icons-vue";
 
 const appStore = useAppStore();
 const userStore = useUserStore();
