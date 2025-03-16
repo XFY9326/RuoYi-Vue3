@@ -1,6 +1,6 @@
 <template>
     <div class="app-container">
-        <el-row>
+        <el-row :gutter="10">
             <el-col :span="12" class="card-box">
                 <el-card>
                     <template #header>

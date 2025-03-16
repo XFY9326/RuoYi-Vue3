@@ -105,7 +105,7 @@ export function selectDictLabel(datas, value) {
     return actions.join("");
 }
 
-// 回显数据字典（字符串数组）
+// 回显数据字典（字符串、数组）
 export function selectDictLabels(data, value, separator) {
     if (value === undefined || value.length === 0) {
         return "";
@@ -113,9 +113,9 @@ export function selectDictLabels(data, value, separator) {
     if (Array.isArray(value)) {
         value = value.join(",");
     }
-    const actions = [];
-    const currentSeparator = undefined === separator ? "," : separator;
-    const temp = value.split(currentSeparator);
+    let actions = [];
+    let currentSeparator = undefined === separator ? "," : separator;
+    let temp = value.split(currentSeparator);
     Object.keys(value.split(currentSeparator)).some(val => {
         let match = false;
         Object.keys(data).some(key => {
@@ -194,40 +194,25 @@ export function handleTree(data, id, parentId, children) {
     };
 
     const childrenListMap = {};
-    const nodeIds = {};
     const tree = [];
 
     for (let d of data) {
-        let parentId = d[config.parentId];
-        if (childrenListMap[parentId] == null) {
-            childrenListMap[parentId] = [];
+        let id = d[config.id];
+        childrenListMap[id] = d;
+        if (!d[config.childrenList]) {
+            d[config.childrenList] = [];
         }
-        nodeIds[d[config.id]] = d;
-        childrenListMap[parentId].push(d);
     }
 
     for (let d of data) {
         let parentId = d[config.parentId];
-        if (nodeIds[parentId] == null) {
+        let parentObj = childrenListMap[parentId];
+        if (!parentObj) {
             tree.push(d);
+        } else {
+            parentObj[config.childrenList].push(d);
         }
     }
-
-    for (let t of tree) {
-        adaptToChildrenList(t);
-    }
-
-    function adaptToChildrenList(o) {
-        if (childrenListMap[o[config.id]] !== null) {
-            o[config.childrenList] = childrenListMap[o[config.id]];
-        }
-        if (o[config.childrenList]) {
-            for (let c of o[config.childrenList]) {
-                adaptToChildrenList(c);
-            }
-        }
-    }
-
     return tree;
 }
 

@@ -12,13 +12,14 @@
             :on-success="handleUploadSuccess"
             :show-file-list="false"
             class="upload-file-uploader"
+            v-if="!disabled"
             multiple
         >
             <!-- 上传按钮 -->
             <el-button type="primary">选取文件</el-button>
         </el-upload>
         <!-- 上传提示 -->
-        <div v-if="showTip" class="el-upload__tip">
+        <div class="el-upload__tip" v-if="showTip && !disabled">
             请上传
             <template v-if="fileSize">
                 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b></template
@@ -43,7 +44,9 @@
                     <span class="el-icon-document"> {{ getFileName(file.name) }} </span>
                 </el-link>
                 <div class="ele-upload-list__item-content-action">
-                    <el-link :underline="false" type="danger" @click="handleDelete(index)">删除</el-link>
+                    <el-link :underline="false" @click="handleDelete(index)" type="danger" v-if="!disabled"
+                        >删除
+                    </el-link>
                 </div>
             </li>
         </transition-group>
@@ -68,12 +71,17 @@ const props = defineProps({
     // 文件类型, 例如['png', 'jpg', 'jpeg']
     fileType: {
         type: Array,
-        default: () => ["doc", "xls", "ppt", "txt", "pdf"],
+        default: () => ["doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "pdf"],
     },
     // 是否显示提示
     isShowTip: {
         type: Boolean,
         default: true,
+    },
+    // 禁用组件（仅查看文件）
+    disabled: {
+        type: Boolean,
+        default: false,
     },
 });
 

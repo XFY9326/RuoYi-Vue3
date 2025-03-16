@@ -87,18 +87,39 @@
             <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
         </el-row>
 
-        <el-table v-loading="loading" :data="tableList" @selection-change="handleSelectionChange">
+        <el-table
+            ref="genRef"
+            v-loading="loading"
+            :data="tableList"
+            @selection-change="handleSelectionChange"
+            :default-sort="defaultSort"
+            @sort-change="handleSortChange"
+        >
             <el-table-column align="center" type="selection" width="55"></el-table-column>
             <el-table-column align="center" label="序号" type="index" width="50">
                 <template #default="scope">
                     <span>{{ (queryParams.pageNum - 1) * queryParams.pageSize + scope.$index + 1 }}</span>
                 </template>
             </el-table-column>
-            <el-table-column :show-overflow-tooltip="true" align="center" label="表名称" prop="tableName" />
-            <el-table-column :show-overflow-tooltip="true" align="center" label="表描述" prop="tableComment" />
-            <el-table-column :show-overflow-tooltip="true" align="center" label="实体" prop="className" />
-            <el-table-column align="center" label="创建时间" prop="createTime" width="160" />
-            <el-table-column align="center" label="更新时间" prop="updateTime" width="160" />
+            <el-table-column label="表名称" align="center" prop="tableName" :show-overflow-tooltip="true" />
+            <el-table-column label="表描述" align="center" prop="tableComment" :show-overflow-tooltip="true" />
+            <el-table-column label="实体" align="center" prop="className" :show-overflow-tooltip="true" />
+            <el-table-column
+                label="创建时间"
+                align="center"
+                prop="createTime"
+                width="160"
+                sortable="custom"
+                :sort-orders="['descending', 'ascending']"
+            />
+            <el-table-column
+                label="更新时间"
+                align="center"
+                prop="updateTime"
+                width="160"
+                sortable="custom"
+                :sort-orders="['descending', 'ascending']"
+            />
             <el-table-column align="center" class-name="small-padding fixed-width" label="操作" width="330">
                 <template #default="scope">
                     <el-tooltip content="预览" placement="top">
@@ -134,7 +155,7 @@
                             icon="Refresh"
                             link
                             type="primary"
-                            @click="handleSynchDb(scope.row)"
+                            @click="handleSyncDb(scope.row)"
                         ></el-button>
                     </el-tooltip>
                     <el-tooltip content="生成代码" placement="top">
@@ -201,6 +222,7 @@ const total = ref(0);
 const tableNames = ref([]);
 const dateRange = ref([]);
 const uniqueId = ref("");
+const defaultSort = ref({ prop: "createTime", order: "descending" });
 
 const data = reactive({
     queryParams: {
@@ -208,6 +230,8 @@ const data = reactive({
         pageSize: 10,
         tableName: undefined,
         tableComment: undefined,
+        orderByColumn: defaultSort.value.prop,
+        isAsc: defaultSort.value.order,
     },
     preview: {
         open: false,
@@ -263,7 +287,7 @@ function handleGenTable(row) {
 }
 
 /** 同步数据库操作 */
-function handleSynchDb(row) {
+function handleSyncDb(row) {
     const tableName = row.tableName;
     proxy.$modal
         .confirm('确认要强制同步"' + tableName + '"表结构吗？')
@@ -290,7 +314,8 @@ function openCreateTable() {
 function resetQuery() {
     dateRange.value = [];
     proxy.resetForm("queryRef");
-    handleQuery();
+    queryParams.value.pageNum = 1;
+    proxy.$refs["genRef"].sort(defaultSort.value.prop, defaultSort.value.order);
 }
 
 /** 预览按钮 */
@@ -313,6 +338,13 @@ function handleSelectionChange(selection) {
     tableNames.value = selection.map(item => item.tableName);
     single.value = selection.length !== 1;
     multiple.value = !selection.length;
+}
+
+/** 排序触发事件 */
+function handleSortChange(column, prop, order) {
+    queryParams.value.orderByColumn = column.prop;
+    queryParams.value.isAsc = column.order;
+    getList();
 }
 
 /** 修改按钮操作 */

@@ -35,7 +35,7 @@ const show = ref(false);
 const fuse = ref(undefined);
 const headerSearchSelectRef = ref(null);
 const router = useRouter();
-const routes = computed(() => usePermissionStore().routes);
+const routes = computed(() => usePermissionStore().defaultRoutes);
 
 function click() {
     show.value = !show.value;
