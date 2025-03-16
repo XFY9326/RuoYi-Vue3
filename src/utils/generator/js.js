@@ -27,7 +27,7 @@ export function makeUpJs(conf, type) {
         buildAttributes(el, dataList, ruleList, optionsList, methodList, propsList, uploadVarList);
     });
 
-    return buildExport(
+    const script = buildexport(
         conf,
         type,
         dataList.join("\n"),
@@ -37,6 +37,8 @@ export function makeUpJs(conf, type) {
         propsList.join("\n"),
         methodList.join("\n")
     );
+
+    return script;
 }
 
 /**
@@ -197,14 +199,14 @@ function buildBeforeUpload(conf) {
     if (conf.fileSize) {
         rightSizeCode = `let isRightSize = file.size / ${unitNum} < ${conf.fileSize}
     if(!isRightSize){
-      ElMessage.error('文件大小超过 ${conf.fileSize}${conf.sizeUnit}')
+      proxy.$modal.msgError('文件大小超过 ${conf.fileSize}${conf.sizeUnit}')
     }`;
         returnList.push("isRightSize");
     }
     if (conf.accept) {
         acceptCode = `let isAccept = new RegExp('${conf.accept}').test(file.type)
     if(!isAccept){
-      ElMessage.error('应该选择${conf.accept}类型的文件')
+      proxy.$modal.msgError('应该选择${conf.accept}类型的文件')
     }`;
         returnList.push("isAccept");
     }
@@ -230,9 +232,10 @@ function buildBeforeUpload(conf) {
  * @returns {*}
  */
 function buildSubmitUpload(conf) {
-    return `function submitUpload() {
+    const str = `function submitUpload() {
     this.$refs['${conf.vModel}'].submit()
   }`;
+    return str;
 }
 
 /**
@@ -240,9 +243,9 @@ function buildSubmitUpload(conf) {
  * @description: 组装js代码方法
  * @returns {*}
  */
-function buildExport(conf, type, data, rules, selectOptions, uploadVar, props, methods) {
+function buildexport(conf, type, data, rules, selectOptions, uploadVar, props, methods) {
     let str = `
-    import { ElMessage } from 'element-plus'
+    const { proxy } = getCurrentInstance()
     const ${conf.formRef} = ref()
     const data = reactive({
       ${conf.formModel}: {

@@ -2,21 +2,21 @@
     <div class="icon-dialog">
         <el-dialog
             v-model="value"
+            width="980px"
             :close-on-click-modal="false"
             :modal-append-to-body="false"
-            width="980px"
-            @close="onClose"
             @open="onOpen"
+            @close="onClose"
         >
             <template #header="{ close, titleId, titleClass }">
                 选择图标
                 <el-input
                     v-model="key"
-                    style="width: 260px; margin-left: 20px"
-                    clearable
+                    size="small"
+                    :style="{ width: '260px' }"
                     placeholder="请输入图标名称"
                     prefix-icon="Search"
-                    size="small"
+                    clearable
                 />
             </template>
             <ul class="icon-ul">
@@ -53,9 +53,7 @@ for (const [key] of Object.entries(ElementPlusIconsVue)) {
 }
 
 function onOpen() {}
-
 function onClose() {}
-
 function onSelect(icon) {
     active.value = icon;
     emit("select", icon);
@@ -64,8 +62,7 @@ function onSelect(icon) {
 
 watch(key, val => {
     if (val) {
-        val = val.toLowerCase();
-        iconList.value = originList.filter(name => name.toLowerCase().indexOf(val) > -1);
+        iconList.value = originList.filter(name => name.indexOf(val) > -1);
     } else {
         iconList.value = originList;
     }
@@ -109,7 +106,7 @@ watch(key, val => {
 }
 
 .icon-dialog {
-    :deep(*) {
+    :deep() {
         .el-dialog {
             border-radius: 8px;
             margin-bottom: 0;

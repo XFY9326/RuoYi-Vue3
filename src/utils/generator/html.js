@@ -7,16 +7,16 @@ let someSpanIsNot24;
 export function dialogWrapper(str) {
     return `<el-dialog v-model="dialogVisible"  @open="onOpen" @close="onClose" title="Dialog Titile">
     ${str}
-    <div slot="footer">
+    <template #footer>
       <el-button @click="close">取消</el-button>
-      <el-button type="primary" @click="handelConfirm">确定</el-button>
-    </div>
+	  <el-button type="primary" @click="handelConfirm">确定</el-button>
+    </template>
   </el-dialog>`;
 }
 
 export function vueTemplate(str) {
     return `<template>
-    <div>
+    <div class="app-container">
       ${str}
     </div>
   </template>`;
@@ -311,7 +311,7 @@ function buildElRadioGroupChild(conf) {
         const tag = conf.optionType === "button" ? "el-radio-button" : "el-radio";
         const border = conf.border ? "border" : "";
         children.push(
-            `<${tag} v-for="(item, index) in ${conf.vModel}Options" :key="index" :value="item.value" :label="item.label" :disabled="item.disabled" ${border}></${tag}>`
+            `<${tag} v-for="(item, index) in ${conf.vModel}Options" :key="index" :label="item.value" :disabled="item.disabled" ${border}>{{item.label}}</${tag}>`
         );
     }
     return children.join("\n");
@@ -323,7 +323,7 @@ function buildElCheckboxGroupChild(conf) {
         const tag = conf.optionType === "button" ? "el-checkbox-button" : "el-checkbox";
         const border = conf.border ? "border" : "";
         children.push(
-            `<${tag} v-for="(item, index) in ${conf.vModel}Options" :key="index" :value="item.value" :label="item.label" :disabled="item.disabled" ${border}></${tag}>`
+            `<${tag} v-for="(item, index) in ${conf.vModel}Options" :key="index" :label="item.value" :disabled="item.disabled" ${border}>{{item.label}}</${tag}>`
         );
     }
     return children.join("\n");

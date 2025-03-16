@@ -1,32 +1,32 @@
 <template>
-    <el-col :class="className" :span="element.span" @click.stop="activeItem(element)">
+    <el-col :span="element.span" :class="className" @click.stop="activeItem(element)">
         <el-form-item
-            v-if="element.layout === 'colFormItem'"
             :label="element.label"
             :label-width="element.labelWidth ? element.labelWidth + 'px' : null"
             :required="element.required"
+            v-if="element.layout === 'colFormItem'"
         >
-            <render :key="element.tag" v-model="element.defaultValue" :conf="element" />
+            <render :key="element.tag" :conf="element" v-model="element.defaultValue" />
         </el-form-item>
-        <el-row v-else :class="element.class" :gutter="element.gutter" @click.stop="activeItem(element)">
+        <el-row :gutter="element.gutter" :class="element.class" @click.stop="activeItem(element)" v-else>
             <span class="component-name"> {{ element.componentName }} </span>
             <draggable
-                ref="draggableItemRef"
+                group="componentsGroup"
                 :animation="340"
-                :component-data="getComponentData()"
                 :list="element.children"
                 class="drag-wrapper"
-                group="componentsGroup"
                 item-key="label"
+                ref="draggableItemRef"
+                :component-data="getComponentData()"
             >
                 <template #item="scoped">
                     <draggable-item
                         :key="scoped.element.renderKey"
-                        :active-id="activeId"
                         :drawing-list="element.children"
                         :element="scoped.element"
-                        :form-conf="formConf"
                         :index="index"
+                        :active-id="activeId"
+                        :form-conf="formConf"
                         @activeItem="activeItem(scoped.element)"
                         @copyItem="copyItem(scoped.element, element.children)"
                         @deleteItem="deleteItem(scoped.index, element.children)"
@@ -35,18 +35,14 @@
             </draggable>
         </el-row>
         <span class="drawing-item-copy" title="复制" @click.stop="copyItem(element)">
-            <el-icon>
-                <CopyDocument />
-            </el-icon>
+            <el-icon><CopyDocument /></el-icon>
         </span>
         <span class="drawing-item-delete" title="删除" @click.stop="deleteItem(index)">
-            <el-icon>
-                <Delete />
-            </el-icon>
+            <el-icon><Delete /></el-icon>
         </span>
     </el-col>
 </template>
-<script name="DraggableItem" setup>
+<script setup name="DraggableItem">
 import draggable from "vuedraggable";
 import render from "@/utils/generator/render";
 import { CopyDocument, Delete } from "@element-plus/icons-vue";
@@ -94,8 +90,6 @@ watch(
             className.value += " unfocus-bordered";
         }
     },
-    {
-        immediate: true,
-    }
+    { immediate: true }
 );
 </script>

@@ -1,24 +1,21 @@
 <template>
-    <el-dialog v-model="open" title="选择生成类型" width="500px" @close="onClose" @open="onOpen">
+    <el-dialog v-model="open" width="500px" title="选择生成类型" @open="onOpen" @close="onClose">
         <el-form ref="codeTypeForm" :model="formData" :rules="rules" label-width="100px">
             <el-form-item label="生成类型" prop="type">
                 <el-radio-group v-model="formData.type">
-                    <el-radio-button
-                        v-for="(item, index) in typeOptions"
-                        :key="index"
-                        :label="item.label"
-                        :value="item.value"
-                    />
+                    <el-radio-button v-for="(item, index) in typeOptions" :key="index" :label="item.value">
+                        {{ item.label }}
+                    </el-radio-button>
                 </el-radio-group>
             </el-form-item>
             <el-form-item v-if="showFileName" label="文件名" prop="fileName">
-                <el-input v-model="formData.fileName" clearable placeholder="请输入文件名" />
+                <el-input v-model="formData.fileName" placeholder="请输入文件名" clearable />
             </el-form-item>
         </el-form>
 
         <template #footer>
-            <el-button @click="onClose"> 取消</el-button>
-            <el-button type="primary" @click="handelConfirm"> 确定</el-button>
+            <el-button @click="onClose">取消</el-button>
+            <el-button type="primary" @click="handelConfirm">确定</el-button>
         </template>
     </el-dialog>
 </template>
@@ -29,6 +26,10 @@ const props = defineProps({
     showFileName: Boolean,
 });
 const emit = defineEmits(["confirm"]);
+/**
+ * 表单数据
+ * @type {Ref<UnwrapRef<{fileName: string?, type: string}>>}
+ */
 const formData = ref({
     fileName: undefined,
     type: "file",

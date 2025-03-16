@@ -111,7 +111,7 @@ watch(
     () => props.modelValue,
     v => {
         if (v !== content.value) {
-            content.value = v === undefined ? "<p></p>" : v;
+            content.value = v ? v : "<p></p>";
         }
     },
     { immediate: true }

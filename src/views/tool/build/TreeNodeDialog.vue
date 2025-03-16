@@ -1,31 +1,31 @@
 <template>
     <div>
         <el-dialog
+            title="添加选项"
             v-model="open"
+            width="800px"
             :close-on-click-modal="false"
             :modal-append-to-body="false"
-            title="添加选项"
-            width="800px"
-            @close="onClose"
             @open="onOpen"
+            @close="onClose"
         >
             <el-form ref="treeNodeForm" :model="formData" :rules="rules" label-width="100px">
                 <el-col :span="24">
                     <el-form-item label="选项名" prop="label">
-                        <el-input v-model="formData.label" clearable placeholder="请输入选项名" />
+                        <el-input v-model="formData.label" placeholder="请输入选项名" clearable />
                     </el-form-item>
                 </el-col>
                 <el-col :span="24">
                     <el-form-item label="选项值" prop="value">
-                        <el-input v-model="formData.value" clearable placeholder="请输入选项值">
+                        <el-input v-model="formData.value" placeholder="请输入选项值" clearable>
                             <template #append>
                                 <el-select v-model="dataType" :style="{ width: '100px' }">
                                     <el-option
                                         v-for="(item, index) in dataTypeOptions"
                                         :key="index"
-                                        :disabled="item.disabled"
                                         :label="item.label"
                                         :value="item.value"
+                                        :disabled="item.disabled"
                                     />
                                 </el-select>
                             </template>
@@ -33,10 +33,12 @@
                     </el-form-item>
                 </el-col>
             </el-form>
-            <div slot="footer">
-                <el-button type="primary" @click="handelConfirm"> 确定</el-button>
-                <el-button @click="onClose"> 取消</el-button>
-            </div>
+            <template #footer>
+                <div class="dialog-footer">
+                    <el-button type="primary" @click="handelConfirm">确 定</el-button>
+                    <el-button @click="onClose">取 消</el-button>
+                </div>
+            </template>
         </el-dialog>
     </div>
 </template>

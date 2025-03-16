@@ -1,10 +1,10 @@
-# RuoYi v3.8.8
+# RuoYi v3.8.9
 
 ## 基线
 
 原始仓库: https://github.com/yangzongzhuan/RuoYi-Vue3
 
-当前基于Commit: e212a0a
+当前基于Commit: 865100e
 
 ## 后端
 
@@ -12,13 +12,13 @@
 
 ## 修改内容
 
--   去除无用界面
--   全部依赖升级
--   增加prettier格式化代码
--   补充表单构建模块
--   使用pnpm代替npm
--   增加部分代码补全功能
--   增加自动部署管理脚本
+- 去除无用界面
+- 全部依赖升级
+- 增加prettier格式化代码
+- 补充表单构建模块
+- 使用pnpm代替npm
+- 增加部分代码补全功能
+- 增加自动部署管理脚本
 
 ## 前端运行
 
@@ -83,10 +83,10 @@ sed -i "s/\r$//" ry.sh
 
 ## Nginx配置
 
--   `proxy_pass`设置为真实后端位置
--   如果在Docker内，`proxy_set_header X-Forwarded-Port`设置为真实端口号  
-    如果不在Docker内，`proxy_set_header X-Forwarded-Port`设置为`$server_port`
--   `gzip_static`：GZIP静态压缩，仅编译启用http_gzip_static_module模块时有效，可使用`nginx -V`查看
+- `proxy_pass`设置为真实后端位置
+- 如果在Docker内，`proxy_set_header X-Forwarded-Port`设置为真实端口号  
+  如果不在Docker内，`proxy_set_header X-Forwarded-Port`设置为`$server_port`
+- `gzip_static`：GZIP静态压缩，仅编译启用http_gzip_static_module模块时有效，可使用`nginx -V`查看
 
 ```text
 server {
@@ -127,5 +127,5 @@ server {
 
 ## 默认账户
 
--   用户名：admin
--   密码：admin123
+- 用户名：admin
+- 密码：admin123

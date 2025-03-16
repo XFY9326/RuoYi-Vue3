@@ -96,8 +96,8 @@
                                     icon="Plus"
                                     @click="handleAdd"
                                     v-hasPermi="['system:user:add']"
-                                    >新增</el-button
-                                >
+                                    >新增
+                                </el-button>
                             </el-col>
                             <el-col :span="1.5">
                                 <el-button
@@ -107,8 +107,8 @@
                                     :disabled="single"
                                     @click="handleUpdate"
                                     v-hasPermi="['system:user:edit']"
-                                    >修改</el-button
-                                >
+                                    >修改
+                                </el-button>
                             </el-col>
                             <el-col :span="1.5">
                                 <el-button
@@ -118,8 +118,8 @@
                                     :disabled="multiple"
                                     @click="handleDelete"
                                     v-hasPermi="['system:user:remove']"
-                                    >删除</el-button
-                                >
+                                    >删除
+                                </el-button>
                             </el-col>
                             <el-col :span="1.5">
                                 <el-button
@@ -128,8 +128,8 @@
                                     icon="Upload"
                                     @click="handleImport"
                                     v-hasPermi="['system:user:import']"
-                                    >导入</el-button
-                                >
+                                    >导入
+                                </el-button>
                             </el-col>
                             <el-col :span="1.5">
                                 <el-button
@@ -138,8 +138,8 @@
                                     icon="Download"
                                     @click="handleExport"
                                     v-hasPermi="['system:user:export']"
-                                    >导出</el-button
-                                >
+                                    >导出
+                                </el-button>
                             </el-col>
                             <right-toolbar
                                 v-model:showSearch="showSearch"
@@ -280,7 +280,7 @@
                         <el-form-item label="归属部门" prop="deptId">
                             <el-tree-select
                                 v-model="form.deptId"
-                                :data="deptOptions"
+                                :data="enabledDeptOptions"
                                 :props="{ value: 'id', label: 'label', children: 'children' }"
                                 value-key="id"
                                 placeholder="请选择归属部门"
@@ -335,9 +335,9 @@
                     <el-col :span="12">
                         <el-form-item label="状态">
                             <el-radio-group v-model="form.status">
-                                <el-radio v-for="dict in sys_normal_disable" :key="dict.value" :value="dict.value">{{
-                                    dict.label
-                                }}</el-radio>
+                                <el-radio v-for="dict in sys_normal_disable" :key="dict.value" :value="dict.value"
+                                    >{{ dict.label }}
+                                </el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-col>
@@ -399,12 +399,15 @@
                 :auto-upload="false"
                 drag
             >
-                <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                <el-icon class="el-icon--upload">
+                    <upload-filled />
+                </el-icon>
                 <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
                 <template #tip>
                     <div class="el-upload__tip text-center">
                         <div class="el-upload__tip">
-                            <el-checkbox v-model="upload.updateSupport" />是否更新已经存在的用户数据
+                            <el-checkbox v-model="upload.updateSupport" />
+                            是否更新已经存在的用户数据
                         </div>
                         <span>仅允许导入xls、xlsx格式文件。</span>
                         <el-link
@@ -412,8 +415,8 @@
                             :underline="false"
                             style="font-size: 12px; vertical-align: baseline"
                             @click="importTemplate"
-                            >下载模板</el-link
-                        >
+                            >下载模板
+                        </el-link>
                     </div>
                 </template>
             </el-upload>
@@ -441,7 +444,7 @@ import {
     updateUser,
 } from "@/api/system/user";
 import { UploadFilled } from "@element-plus/icons-vue";
-import { Splitpanes, Pane } from "splitpanes";
+import { Pane, Splitpanes } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 
 const router = useRouter();
@@ -461,6 +464,7 @@ const title = ref("");
 const dateRange = ref([]);
 const deptName = ref("");
 const deptOptions = ref(undefined);
+const enabledDeptOptions = ref(undefined);
 const initPassword = ref(undefined);
 const postOptions = ref([]);
 const roleOptions = ref([]);
@@ -538,13 +542,6 @@ watch(deptName, val => {
     proxy.$refs["deptTreeRef"].filter(val);
 });
 
-/** 查询部门下拉树结构 */
-function getDeptTree() {
-    deptTreeSelect().then(response => {
-        deptOptions.value = response.data;
-    });
-}
-
 /** 查询用户列表 */
 function getList() {
     loading.value = true;
@@ -552,6 +549,27 @@ function getList() {
         loading.value = false;
         userList.value = res.rows;
         total.value = res.total;
+    });
+}
+
+/** 查询部门下拉树结构 */
+function getDeptTree() {
+    deptTreeSelect().then(response => {
+        deptOptions.value = response.data;
+        enabledDeptOptions.value = filterDisabledDept(JSON.parse(JSON.stringify(response.data)));
+    });
+}
+
+/** 过滤禁用的部门 */
+function filterDisabledDept(deptList) {
+    return deptList.filter(dept => {
+        if (dept.disabled) {
+            return false;
+        }
+        if (dept.children && dept.children.length) {
+            dept.children = filterDisabledDept(dept.children);
+        }
+        return true;
     });
 }
 
