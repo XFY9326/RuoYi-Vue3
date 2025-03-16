@@ -1,5 +1,9 @@
 import defaultSettings from "@/settings";
+import { useDark, useToggle } from "@vueuse/core";
 import { useDynamicTitle } from "@/utils/dynamicTitle";
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 
 const { sideTheme, showSettings, topNav, tagsView, fixedHeader, sidebarLogo, dynamicTitle } = defaultSettings;
 
@@ -22,6 +26,7 @@ const useSettingsStore = defineStore("settings", {
         fixedHeader: storageSetting.fixedHeader === undefined ? fixedHeader : storageSetting.fixedHeader,
         sidebarLogo: storageSetting.sidebarLogo === undefined ? sidebarLogo : storageSetting.sidebarLogo,
         dynamicTitle: storageSetting.dynamicTitle === undefined ? dynamicTitle : storageSetting.dynamicTitle,
+        isDark: isDark.value,
     }),
     /**
      * @mixin DefaultSettings
@@ -44,6 +49,13 @@ const useSettingsStore = defineStore("settings", {
         setTitle(title) {
             this.title = title;
             useDynamicTitle();
+        },
+        /**
+         * 切换暗黑模式
+         */
+        toggleTheme() {
+            this.isDark = !this.isDark;
+            toggleDark();
         },
     },
 });

@@ -190,7 +190,7 @@ onMounted(() => {
 .topmenu-container.el-menu--horizontal > .el-menu-item:not(.is-disabled):focus,
 .topmenu-container.el-menu--horizontal > .el-menu-item:not(.is-disabled):hover,
 .topmenu-container.el-menu--horizontal > .el-submenu .el-submenu__title:hover {
-    background-color: #ffffff !important;
+    background-color: #ffffff;
 }
 
 /* 图标右间距 */

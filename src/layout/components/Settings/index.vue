@@ -174,7 +174,7 @@ defineExpose({
 <style lang="scss" scoped>
 .setting-drawer-title {
     margin-bottom: 12px;
-    color: rgba(0, 0, 0, 0.85);
+    color: var(--el-text-color-primary, rgba(0, 0, 0, 0.85));
     line-height: 22px;
     font-weight: bold;
 
@@ -201,13 +201,6 @@ defineExpose({
             height: 48px;
         }
 
-        .custom-img {
-            width: 48px;
-            height: 38px;
-            border-radius: 5px;
-            box-shadow: 1px 1px 2px #898484;
-        }
-
         .setting-drawer-block-checbox-selectIcon {
             position: absolute;
             top: 0;
@@ -224,7 +217,7 @@ defineExpose({
 }
 
 .drawer-item {
-    color: rgba(0, 0, 0, 0.65);
+    color: var(--el-text-color-regular, rgba(0, 0, 0, 0.65));
     padding: 12px 0;
     font-size: 14px;
 

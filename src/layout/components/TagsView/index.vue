@@ -364,7 +364,7 @@ function handleScroll() {
             }
 
             &:hover {
-                background-color: #b4bccc;
+                background-color: var(--tags-close-hover, #b4bccc);
                 color: #fff;
                 width: 12px !important;
                 height: 12px !important;

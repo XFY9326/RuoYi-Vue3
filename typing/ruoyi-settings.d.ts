@@ -55,6 +55,11 @@ declare type DefaultSettings = {
     size?: string;
 
     /**
+     * 是否暗黑模式
+     */
+    isDark: boolean;
+
+    /**
      * @type {string | string[]} 'production' | ['production', 'development']
      * @description Need show err logs component.
      * The default is only used in the production env
