@@ -8,11 +8,16 @@ SCRIPT_DIR=$(
 )
 PROJECT_PATH=$(realpath "${SCRIPT_DIR}")
 
+# 部署解压缓存临时目录
 DEPLOY_UNZIP_TMP_DIR="./deploy_temp"
+# 部署目录名
 DEPLOY_DIR_NAME="html"
+# 部署目录
 DEPLOY_DIR_PATH="./nginx/${DEPLOY_DIR_NAME}"
 
+# 备份目录
 BACKUP_DIR_PATH="$PROJECT_PATH/backup"
+# 回滚目录
 ROLLBACK_DIR_PATH="$PROJECT_PATH/rollback"
 
 deploy() {
