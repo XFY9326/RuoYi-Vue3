@@ -1,7 +1,7 @@
 <template>
     <div class="login">
         <el-form ref="loginRef" :model="loginForm" :rules="loginRules" class="login-form">
-            <h3 class="title">{{ page_title }}</h3>
+            <h3 class="title">{{ title }}</h3>
             <el-form-item prop="username">
                 <el-input v-model="loginForm.username" auto-complete="off" placeholder="账号" size="large" type="text">
                     <template #prefix>
@@ -71,12 +71,12 @@ import Cookies from "js-cookie";
 import { decrypt, encrypt } from "@/utils/jsencrypt";
 import useUserStore from "@/store/modules/user";
 
+const title = import.meta.env.VITE_APP_TITLE;
+
 const userStore = useUserStore();
 const route = useRoute();
 const router = useRouter();
 const { proxy } = getCurrentInstance();
-
-const page_title = import.meta.env.VITE_APP_TITLE;
 
 const loginForm = ref({
     username: "",
