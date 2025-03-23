@@ -196,10 +196,10 @@
                         <el-form-item label="操作方法：">
                             <el-input
                                 v-model="form.method"
-                                type="textarea"
-                                resize="none"
                                 :autosize="{ minRows: 1, maxRows: 2 }"
                                 readonly
+                                resize="none"
+                                type="textarea"
                             />
                         </el-form-item>
                     </el-col>
@@ -207,10 +207,10 @@
                         <el-form-item label="请求参数：">
                             <el-input
                                 v-model="form.operParam"
-                                type="textarea"
-                                resize="none"
                                 :autosize="{ minRows: 1, maxRows: 8 }"
                                 readonly
+                                resize="none"
+                                type="textarea"
                             />
                         </el-form-item>
                     </el-col>
@@ -218,10 +218,10 @@
                         <el-form-item label="返回参数：">
                             <el-input
                                 v-model="form.jsonResult"
-                                type="textarea"
-                                resize="none"
                                 :autosize="{ minRows: 1, maxRows: 8 }"
                                 readonly
+                                resize="none"
+                                type="textarea"
                             />
                         </el-form-item>
                     </el-col>

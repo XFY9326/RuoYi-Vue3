@@ -5,13 +5,13 @@
             <el-menu
                 :active-text-color="theme"
                 :background-color="getMenuBackground"
-                :text-color="getMenuTextColor"
+                :class="sideTheme"
                 :collapse="isCollapse"
                 :collapse-transition="false"
                 :default-active="activeMenu"
+                :text-color="getMenuTextColor"
                 :unique-opened="true"
                 mode="vertical"
-                :class="sideTheme"
             >
                 <sidebar-item
                     v-for="(route, index) in sidebarRouters"

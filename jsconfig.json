@@ -6,6 +6,6 @@
         },
         "types": ["element-plus/global"]
     },
-    "include": ["src/**/*", "typing/**/*", "vite/**/*", "*.config.js"],
+    "include": ["src/**/*", "typing/**/*", "vite/**/*", "*.config.js", "*.config.cjs"],
     "exclude": ["node_modules", "**/node_modules/*", ".idea", ".vscode", "dist"]
 }

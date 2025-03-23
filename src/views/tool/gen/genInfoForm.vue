@@ -107,14 +107,14 @@
                         v-model="info.parentMenuId"
                         :data="menuOptions"
                         :props="{ value: 'menuId', label: 'menuName', children: 'children' }"
-                        value-key="menuId"
-                        placeholder="请选择系统菜单"
                         check-strictly
+                        placeholder="请选择系统菜单"
+                        value-key="menuId"
                     />
                 </el-form-item>
             </el-col>
 
-            <el-col :span="24" v-if="info.genType == '1'">
+            <el-col v-if="info.genType == '1'" :span="24">
                 <el-form-item prop="genPath">
                     <template #label>
                         自定义路径

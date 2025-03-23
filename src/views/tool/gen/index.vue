@@ -91,8 +91,8 @@
             ref="genRef"
             v-loading="loading"
             :data="tableList"
-            @selection-change="handleSelectionChange"
             :default-sort="defaultSort"
+            @selection-change="handleSelectionChange"
             @sort-change="handleSortChange"
         >
             <el-table-column align="center" type="selection" width="55"></el-table-column>
@@ -101,24 +101,24 @@
                     <span>{{ (queryParams.pageNum - 1) * queryParams.pageSize + scope.$index + 1 }}</span>
                 </template>
             </el-table-column>
-            <el-table-column label="表名称" align="center" prop="tableName" :show-overflow-tooltip="true" />
-            <el-table-column label="表描述" align="center" prop="tableComment" :show-overflow-tooltip="true" />
-            <el-table-column label="实体" align="center" prop="className" :show-overflow-tooltip="true" />
+            <el-table-column :show-overflow-tooltip="true" align="center" label="表名称" prop="tableName" />
+            <el-table-column :show-overflow-tooltip="true" align="center" label="表描述" prop="tableComment" />
+            <el-table-column :show-overflow-tooltip="true" align="center" label="实体" prop="className" />
             <el-table-column
-                label="创建时间"
-                align="center"
-                prop="createTime"
-                width="160"
-                sortable="custom"
                 :sort-orders="['descending', 'ascending']"
+                align="center"
+                label="创建时间"
+                prop="createTime"
+                sortable="custom"
+                width="160"
             />
             <el-table-column
-                label="更新时间"
-                align="center"
-                prop="updateTime"
-                width="160"
-                sortable="custom"
                 :sort-orders="['descending', 'ascending']"
+                align="center"
+                label="更新时间"
+                prop="updateTime"
+                sortable="custom"
+                width="160"
             />
             <el-table-column align="center" class-name="small-padding fixed-width" label="操作" width="330">
                 <template #default="scope">

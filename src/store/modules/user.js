@@ -1,6 +1,6 @@
 import { getInfo, login, logout } from "@/api/login";
 import { getToken, removeToken, setToken } from "@/utils/auth";
-import { isHttp, isEmpty } from "@/utils/validate";
+import { isEmpty, isHttp } from "@/utils/validate";
 import defAva from "@/assets/images/profile.svg";
 
 const useUserStore = defineStore("user", {

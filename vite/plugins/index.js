@@ -6,6 +6,7 @@ import createCompression from "./compression";
 import createSetupExtend from "./setup-extend";
 import createElementPlusTypingCopy from "./element-plus-typing-copy";
 import createZipPack from "./zip-pack";
+import createLegacy from "./legacy.js";
 
 /**
  * 配置 vite 插件
@@ -21,6 +22,7 @@ export default function createVitePlugins(env, isBuild = false) {
         createSvgIcon(),
         createElementPlusTypingCopy(),
     ];
+    isBuild && vitePlugins.push(createLegacy());
     isBuild && vitePlugins.push(createZipPack(env));
     isBuild && vitePlugins.push(...createCompression(env));
     return vitePlugins;

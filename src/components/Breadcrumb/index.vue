@@ -13,6 +13,7 @@
 
 <script setup>
 import usePermissionStore from "@/store/modules/permission";
+
 const route = useRoute();
 const router = useRouter();
 const permissionStore = usePermissionStore();

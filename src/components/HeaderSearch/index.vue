@@ -8,7 +8,7 @@
             class="header-search-select"
             default-first-option
             filterable
-            placeholder="Search"
+            placeholder="搜索"
             remote
             @change="change"
         >

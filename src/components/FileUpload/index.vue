@@ -1,6 +1,7 @@
 <template>
     <div class="upload-file">
         <el-upload
+            v-if="!disabled"
             ref="fileUpload"
             :action="uploadFileUrl"
             :before-upload="handleBeforeUpload"
@@ -12,14 +13,13 @@
             :on-success="handleUploadSuccess"
             :show-file-list="false"
             class="upload-file-uploader"
-            v-if="!disabled"
             multiple
         >
             <!-- 上传按钮 -->
             <el-button type="primary">选取文件</el-button>
         </el-upload>
         <!-- 上传提示 -->
-        <div class="el-upload__tip" v-if="showTip && !disabled">
+        <div v-if="showTip && !disabled" class="el-upload__tip">
             请上传
             <template v-if="fileSize">
                 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b></template
@@ -44,7 +44,7 @@
                     <span class="el-icon-document"> {{ getFileName(file.name) }} </span>
                 </el-link>
                 <div class="ele-upload-list__item-content-action">
-                    <el-link :underline="false" @click="handleDelete(index)" type="danger" v-if="!disabled"
+                    <el-link v-if="!disabled" :underline="false" type="danger" @click="handleDelete(index)"
                         >删除
                     </el-link>
                 </div>

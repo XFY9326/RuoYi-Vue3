@@ -6,16 +6,19 @@
             </div>
             <el-scrollbar class="left-scrollbar">
                 <div class="components-list">
-                    <div class="components-title"><svg-icon icon-class="component" />输入型组件</div>
+                    <div class="components-title">
+                        <svg-icon icon-class="component" />
+                        输入型组件
+                    </div>
                     <draggable
-                        class="components-draggable"
+                        :clone="cloneComponent"
+                        :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
                         :list="inputComponents"
-                        :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
-                        :clone="cloneComponent"
-                        draggable=".components-item"
                         :sort="false"
-                        @end="onEnd"
+                        class="components-draggable"
+                        draggable=".components-item"
                         item-key="label"
+                        @end="onEnd"
                     >
                         <template #item="{ element, index }">
                             <div :key="index" class="components-item" @click="addComponent(element)">
@@ -26,16 +29,19 @@
                             </div>
                         </template>
                     </draggable>
-                    <div class="components-title"><svg-icon icon-class="component" />选择型组件</div>
+                    <div class="components-title">
+                        <svg-icon icon-class="component" />
+                        选择型组件
+                    </div>
                     <draggable
-                        class="components-draggable"
+                        :clone="cloneComponent"
+                        :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
                         :list="selectComponents"
-                        :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
-                        :clone="cloneComponent"
-                        draggable=".components-item"
                         :sort="false"
-                        @end="onEnd"
+                        class="components-draggable"
+                        draggable=".components-item"
                         item-key="label"
+                        @end="onEnd"
                     >
                         <template #item="{ element, index }">
                             <div :key="index" class="components-item" @click="addComponent(element)">
@@ -46,16 +52,19 @@
                             </div>
                         </template>
                     </draggable>
-                    <div class="components-title"><svg-icon icon-class="component" /> 布局型组件</div>
+                    <div class="components-title">
+                        <svg-icon icon-class="component" />
+                        布局型组件
+                    </div>
                     <draggable
-                        class="components-draggable"
-                        :list="layoutComponents"
-                        :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
                         :clone="cloneComponent"
-                        draggable=".components-item"
+                        :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
+                        :list="layoutComponents"
                         :sort="false"
-                        @end="onEnd"
+                        class="components-draggable"
+                        draggable=".components-item"
                         item-key="label"
+                        @end="onEnd"
                     >
                         <template #item="{ element, index }">
                             <div :key="index" class="components-item" @click="addComponent(element)">
@@ -71,35 +80,35 @@
         </div>
         <div class="center-board">
             <div class="action-bar">
-                <el-button icon="Download" type="primary" text @click="download"> 导出vue文件 </el-button>
-                <el-button class="copy-btn-main" icon="DocumentCopy" type="primary" text @click="copy">
+                <el-button icon="Download" text type="primary" @click="download"> 导出vue文件</el-button>
+                <el-button class="copy-btn-main" icon="DocumentCopy" text type="primary" @click="copy">
                     复制代码
                 </el-button>
-                <el-button class="delete-btn" icon="Delete" text @click="empty" type="danger"> 清空 </el-button>
+                <el-button class="delete-btn" icon="Delete" text type="danger" @click="empty"> 清空</el-button>
             </div>
             <el-scrollbar class="center-scrollbar">
-                <el-row class="center-board-row" :gutter="formConf.gutter">
+                <el-row :gutter="formConf.gutter" class="center-board-row">
                     <el-form
-                        :size="formConf.size"
-                        :label-position="formConf.labelPosition"
                         :disabled="formConf.disabled"
+                        :label-position="formConf.labelPosition"
                         :label-width="formConf.labelWidth + 'px'"
+                        :size="formConf.size"
                     >
                         <draggable
-                            class="drawing-board"
-                            :list="drawingList"
                             :animation="340"
+                            :list="drawingList"
+                            class="drawing-board"
                             group="componentsGroup"
                             item-key="label"
                         >
                             <template #item="{ element, index }">
                                 <draggable-item
                                     :key="element.renderKey"
+                                    :active-id="activeId"
                                     :drawing-list="drawingList"
                                     :element="element"
-                                    :index="index"
-                                    :active-id="activeId"
                                     :form-conf="formConf"
+                                    :index="index"
                                     @activeItem="activeFormItem"
                                     @copyItem="drawingItemCopy"
                                     @deleteItem="drawingItemDelete"
@@ -120,8 +129,8 @@
 
         <code-type-dialog
             v-model="dialogVisible"
-            title="选择生成类型"
             :showFileName="showFileName"
+            title="选择生成类型"
             @confirm="generate"
         />
         <input id="copyNode" type="hidden" />
@@ -133,14 +142,14 @@ import draggable from "vuedraggable";
 import ClipboardJS from "clipboard";
 import beautifier from "js-beautify";
 import {
-    inputComponents,
-    selectComponents,
-    layoutComponents,
     formConf as formConfData,
+    inputComponents,
+    layoutComponents,
+    selectComponents,
 } from "@/utils/generator/config";
 import { beautifierConf } from "@/utils/index";
 import drawingDefault from "@/utils/generator/drawingDefault";
-import { makeUpHtml, vueTemplate, vueScript, cssStyle } from "@/utils/generator/html";
+import { cssStyle, makeUpHtml, vueScript, vueTemplate } from "@/utils/generator/html";
 import { makeUpJs } from "@/utils/generator/js";
 import { makeUpCss } from "@/utils/generator/css";
 import Download from "@/plugins/download";
@@ -168,16 +177,19 @@ function activeFormItem(element) {
     activeData.value = element;
     activeId.value = element.formId;
 }
+
 function copy() {
     dialogVisible.value = true;
     showFileName.value = false;
     operationType.value = "copy";
 }
+
 function download() {
     dialogVisible.value = true;
     showFileName.value = true;
     operationType.value = "download";
 }
+
 function empty() {
     proxy.$modal.confirm("确定要清空所有组件吗？", "提示", { type: "warning" }).then(() => {
         idGlobal.value = 100;
@@ -275,6 +287,7 @@ function updateDrawingList(newTag, list) {
         });
     }
 }
+
 function generate(data) {
     generateConf.value = data;
     nextTick(() => {
@@ -300,9 +313,11 @@ function execDownload(data) {
 function execCopy(data) {
     document.getElementById("copyNode").click();
 }
+
 function AssembleFormData() {
     formData.value = { fields: JSON.parse(JSON.stringify(drawingList.value)), ...formConf.value };
 }
+
 function generateCode() {
     const { type } = generateConf.value;
     AssembleFormData();
@@ -311,6 +326,7 @@ function generateCode() {
     const css = cssStyle(makeUpCss(formData.value));
     return beautifier.html(html + script + css, beautifierConf.html);
 }
+
 watch(
     () => activeData.value.label,
     (val, oldVal) => {
