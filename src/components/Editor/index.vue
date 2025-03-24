@@ -178,7 +178,7 @@ function handleUploadError() {
 }
 </script>
 
-<style>
+<style scoped>
 .editor-img-uploader {
     display: none;
 }

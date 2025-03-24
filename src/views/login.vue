@@ -38,7 +38,7 @@
                 </el-input>
                 <div v-loading="codeUrl === ''" class="login-code">
                     <!--suppress HtmlRequiredAltAttribute -->
-                    <img :src="codeUrl" class="login-code-img" @click="getCode" />
+                    <img :src="codeUrl" class="login-code-img" @click="getCode" alt="code" />
                 </div>
             </el-form-item>
             <el-checkbox v-model="loginForm.rememberMe" style="margin: 0 0 25px 0">记住密码</el-checkbox>

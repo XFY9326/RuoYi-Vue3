@@ -58,7 +58,7 @@
                 </el-input>
                 <div v-loading="codeUrl === ''" class="register-code">
                     <!--suppress HtmlRequiredAltAttribute -->
-                    <img :src="codeUrl" class="register-code-img" @click="getCode" />
+                    <img :src="codeUrl" class="register-code-img" @click="getCode" alt="code" />
                 </div>
             </el-form-item>
             <el-form-item style="width: 100%">

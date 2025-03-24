@@ -1,6 +1,6 @@
 <template>
     <div class="user-info-head" @click="editCropper()">
-        <img :src="options.img" class="img-circle img-lg" title="点击上传头像" />
+        <img :src="options.img" class="img-circle img-lg" title="点击上传头像" alt="avatar" />
         <el-dialog
             v-model="open"
             :title="title"
