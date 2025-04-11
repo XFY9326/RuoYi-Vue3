@@ -37,7 +37,7 @@
     "@types/file-saver": "^2.0.7",
     "@types/js-beautify": "^1.14.3",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^22.13.14",
+    "@types/node": "^22.14.0",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-legacy": "^6.0.2",
     "@vitejs/plugin-vue": "5.2.1",
