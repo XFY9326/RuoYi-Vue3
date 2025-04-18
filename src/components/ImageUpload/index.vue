@@ -7,6 +7,7 @@
             :before-upload="handleBeforeUpload"
             :class="{ hide: fileList.length >= limit }"
             :file-list="fileList"
+            :data="data"
             :headers="headers"
             :limit="limit"
             :on-error="handleUploadError"
@@ -46,6 +47,15 @@ import { Plus } from "@element-plus/icons-vue";
 
 const props = defineProps({
     modelValue: [String, Object, Array],
+    // 上传接口地址
+    action: {
+        type: String,
+        default: "/common/upload",
+    },
+    // 上传携带的参数
+    data: {
+        type: Object,
+    },
     // 图片数量限制
     limit: {
         type: Number,
@@ -75,7 +85,7 @@ const uploadList = ref([]);
 const dialogImageUrl = ref("");
 const dialogVisible = ref(false);
 const baseUrl = import.meta.env.VITE_APP_BASE_API;
-const uploadImgUrl = ref(import.meta.env.VITE_APP_BASE_API + "/common/upload"); // 上传的图片服务器地址
+const uploadImgUrl = ref(import.meta.env.VITE_APP_BASE_API + props.action); // 上传的图片服务器地址
 const headers = ref({ Authorization: "Bearer " + getToken() });
 const fileList = ref([]);
 const showTip = computed(() => props.isShowTip && (props.fileType || props.fileSize));

@@ -30,7 +30,12 @@
                     <span>{{ (pageNum - 1) * pageSize + scope.$index + 1 }}</span>
                 </template>
             </el-table-column>
-            <el-table-column :reserve-selection="true" type="selection" width="55"></el-table-column>
+            <el-table-column
+                :reserve-selection="true"
+                type="selection"
+                :selectable="checkSelectable"
+                width="55"
+            ></el-table-column>
             <el-table-column align="center" label="角色编号" prop="roleId" />
             <el-table-column align="center" label="角色名称" prop="roleName" />
             <el-table-column align="center" label="权限字符" prop="roleKey" />
@@ -72,7 +77,9 @@ const form = ref({
 
 /** 单击选中行数据 */
 function clickRow(row) {
-    proxy.$refs["roleRef"].toggleRowSelection(row);
+    if (checkSelectable(row)) {
+        proxy.$refs["roleRef"].toggleRowSelection(row);
+    }
 }
 
 /** 多选框选中数据 */
@@ -83,6 +90,11 @@ function handleSelectionChange(selection) {
 /** 保存选中的数据编号 */
 function getRowKey(row) {
     return row.roleId;
+}
+
+/** 检查角色状态 */
+function checkSelectable(row) {
+    return row.status === "0";
 }
 
 /** 关闭按钮 */
