@@ -74,7 +74,18 @@ export default defineConfig(({ mode, command }) => {
             open: false,
         },
         build: {
+            // https://vite.dev/config/build-options.html
+            sourcemap: command === "build" ? false : "inline",
+            outDir: "dist",
+            assetsDir: "assets",
             chunkSizeWarningLimit: 2048,
+            rollupOptions: {
+                output: {
+                    chunkFileNames: "static/js/[name]-[hash].js",
+                    entryFileNames: "static/js/[name]-[hash].js",
+                    assetFileNames: "static/[ext]/[name]-[hash].[ext]",
+                },
+            },
         },
         optimizeDeps: {
             include: ["quill", "vue-quilly"],

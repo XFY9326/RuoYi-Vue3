@@ -24,12 +24,23 @@
                     <el-button circle icon="Menu" />
                     <template #dropdown>
                         <el-dropdown-menu>
+                            <!-- 全选/反选 按钮 -->
+                            <el-dropdown-item>
+                                <el-checkbox
+                                    :indeterminate="isIndeterminate"
+                                    v-model="isChecked"
+                                    @change="toggleCheckAll"
+                                >
+                                    列展示
+                                </el-checkbox>
+                            </el-dropdown-item>
+                            <div class="check-line"></div>
                             <template v-for="item in columns" :key="item.key">
                                 <el-dropdown-item>
                                     <el-checkbox
-                                        :checked="item.visible"
-                                        :label="item.label"
+                                        v-model="item.visible"
                                         @change="checkboxChange($event, item.label)"
+                                        :label="item.label"
                                     />
                                 </el-dropdown-item>
                             </template>
@@ -89,6 +100,13 @@ const style = computed(() => {
     return ret;
 });
 
+// 是否全选/半选 状态
+const isChecked = computed({
+    get: () => props.columns.every(col => col.visible),
+    set: () => {},
+});
+const isIndeterminate = computed(() => props.columns.some(col => col.visible) && !isChecked.value);
+
 // 搜索
 function toggleSearch() {
     emits("update:showSearch", !props.showSearch);
@@ -121,9 +139,15 @@ if (props.showColumnsType === "transfer") {
     }
 }
 
-// 勾选
+// 单勾选
 function checkboxChange(event, label) {
     props.columns.filter(item => item.label === label)[0].visible = event;
+}
+
+// 切换全选/反选
+function toggleCheckAll() {
+    const newValue = !isChecked.value;
+    props.columns.forEach(col => (col.visible = newValue));
 }
 </script>
 
@@ -141,5 +165,12 @@ function checkboxChange(event, label) {
 :deep(.el-dropdown-menu__item) {
     line-height: 30px;
     padding: 0 17px;
+}
+
+.check-line {
+    width: 90%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 3px auto;
 }
 </style>

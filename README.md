@@ -4,7 +4,7 @@
 
 原始仓库: https://github.com/yangzongzhuan/RuoYi-Vue3
 
-当前基于Commit: ff14fa5
+当前基于Commit: a4c4653
 
 ## 后端
 

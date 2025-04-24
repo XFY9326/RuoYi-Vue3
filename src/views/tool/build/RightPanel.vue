@@ -414,9 +414,9 @@
                         label="选项尺寸"
                     >
                         <el-radio-group v-model="activeData.size">
-                            <el-radio-button value="large"> 较大</el-radio-button>
-                            <el-radio-button value="default"> 默认</el-radio-button>
-                            <el-radio-button value="small"> 较小</el-radio-button>
+                            <el-radio-button value="large">较大</el-radio-button>
+                            <el-radio-button value="default">默认</el-radio-button>
+                            <el-radio-button value="small">较小</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item v-if="activeData['show-word-limit'] !== undefined" label="输入统计">
@@ -522,16 +522,16 @@
                     </el-form-item>
                     <el-form-item label="表单尺寸">
                         <el-radio-group v-model="formConf.size">
-                            <el-radio-button value="large"> 较大</el-radio-button>
-                            <el-radio-button value="default"> 默认</el-radio-button>
-                            <el-radio-button value="small"> 较小</el-radio-button>
+                            <el-radio-button value="large">较大</el-radio-button>
+                            <el-radio-button value="default">默认</el-radio-button>
+                            <el-radio-button value="small">较小</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item label="标签对齐">
                         <el-radio-group v-model="formConf.labelPosition">
-                            <el-radio-button value="left"> 左对齐</el-radio-button>
-                            <el-radio-button value="right"> 右对齐</el-radio-button>
-                            <el-radio-button value="top"> 顶部对齐</el-radio-button>
+                            <el-radio-button value="left">左对齐</el-radio-button>
+                            <el-radio-button value="right">右对齐</el-radio-button>
+                            <el-radio-button value="top">顶部对齐</el-radio-button>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item label="标签宽度">
